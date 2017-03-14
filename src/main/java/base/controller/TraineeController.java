@@ -1,8 +1,10 @@
 package base.controller;
 
 import base.model.Card;
+import base.model.Course;
 import base.model.Trainee;
 import base.service.CardService;
+import base.service.CourseService;
 import base.service.TraineeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +28,8 @@ public class TraineeController {
     TraineeService traineeService;
     @Resource
     CardService cardService;
+    @Resource
+    CourseService courseService;
 
     @RequestMapping("/Home")
     public String toHome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
@@ -155,15 +160,31 @@ public class TraineeController {
 
     @RequestMapping("/C_Subscribe")
     public String toS(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-
+        System.out.println("/C_Subscribe");
         String username = (String) session.getAttribute("username");
-        String password = (String) session.getAttribute("password");
+        //String password = (String) session.getAttribute("password");
 
         Trainee trainee = traineeService.getTraineeByUsername(username);
 
-        model.addAttribute(trainee);
+        int traineeid = trainee.getId();
+        List<Course> courseArrayList = courseService.getUnsubscribedClass(traineeid);
 
-        return "/trainee/C_Subscribe";
+        if (courseArrayList!=null){
+            for (int i=0;i<courseArrayList.size();i++){
+                System.out.println(courseArrayList.get(i).getClassid());
+            }
+        }
+
+        System.out.println("size:"+courseArrayList.size());
+
+//        List<String> stringList = new ArrayList<>();
+//        stringList.add("a");
+//        stringList.add("b");
+
+        model.addAttribute(trainee);
+        model.addAttribute("list",courseArrayList);
+
+        return "/trainee/C_subscribe";
     }
 
     @RequestMapping("/C_Unsubscribe")

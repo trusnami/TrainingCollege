@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="base.mapper.TclassMapper" >
-  <resultMap id="BaseResultMap" type="base.model.TclassKey" >
+<mapper namespace="base.mapper.TcourseMapper" >
+  <resultMap id="BaseResultMap" type="base.model.TcourseKey" >
     <id column="classid" property="classid" jdbcType="INTEGER" />
     <id column="traineeid" property="traineeid" jdbcType="INTEGER" />
   </resultMap>
@@ -66,13 +66,13 @@
   <sql id="Base_Column_List" >
     classid, traineeid
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="base.model.TclassExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="base.model.TcourseExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from Tclass
+    from Tcourse
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -80,23 +80,23 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="base.model.TclassKey" >
-    delete from Tclass
+  <delete id="deleteByPrimaryKey" parameterType="base.model.TcourseKey" >
+    delete from Tcourse
     where classid = #{classid,jdbcType=INTEGER}
       and traineeid = #{traineeid,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="base.model.TclassExample" >
-    delete from Tclass
+  <delete id="deleteByExample" parameterType="base.model.TcourseExample" >
+    delete from Tcourse
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="base.model.TclassKey" >
-    insert into Tclass (classid, traineeid)
+  <insert id="insert" parameterType="base.model.TcourseKey" >
+    insert into Tcourse (classid, traineeid)
     values (#{classid,jdbcType=INTEGER}, #{traineeid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="base.model.TclassKey" >
-    insert into Tclass
+  <insert id="insertSelective" parameterType="base.model.TcourseKey" >
+    insert into Tcourse
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="classid != null" >
         classid,
@@ -114,14 +114,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="base.model.TclassExample" resultType="java.lang.Integer" >
-    select count(*) from Tclass
+  <select id="countByExample" parameterType="base.model.TcourseExample" resultType="java.lang.Integer" >
+    select count(*) from Tcourse
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update Tclass
+    update Tcourse
     <set >
       <if test="record.classid != null" >
         classid = #{record.classid,jdbcType=INTEGER},
@@ -135,7 +135,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update Tclass
+    update Tcourse
     set classid = #{record.classid,jdbcType=INTEGER},
       traineeid = #{record.traineeid,jdbcType=INTEGER}
     <if test="_parameter != null" >

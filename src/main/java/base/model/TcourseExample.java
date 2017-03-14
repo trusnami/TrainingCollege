@@ -3,14 +3,14 @@ package base.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TclassExample {
+public class TcourseExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TclassExample() {
+    public TcourseExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

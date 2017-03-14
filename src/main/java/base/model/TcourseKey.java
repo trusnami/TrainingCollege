@@ -1,6 +1,6 @@
 package base.model;
 
-public class TclassKey {
+public class TcourseKey {
     private Integer classid;
 
     private Integer traineeid;

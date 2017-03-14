@@ -54,8 +54,8 @@
         <table tableName="trainee"></table>
         <table tableName="user"></table>
         <table tableName="card"></table>
-        <table tableName="class"></table>
-        <table tableName="Tclass"></table>
+        <table tableName="course"></table>
+        <table tableName="Tcourse"></table>
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">
             <columnOverride column="" javaType="" />

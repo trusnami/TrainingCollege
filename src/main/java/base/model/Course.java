@@ -1,6 +1,6 @@
 package base.model;
 
-public class Class {
+public class Course {
     private Integer classid;
 
     private String classname;
@@ -14,6 +14,10 @@ public class Class {
     private Integer maxnumber;
 
     private String description;
+
+    private Integer price;
+
+    private Integer state;
 
     public Integer getClassid() {
         return classid;
@@ -69,5 +73,21 @@ public class Class {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }

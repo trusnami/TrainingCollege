@@ -211,7 +211,7 @@
         </section>
 
         <!-- Main content -->
-        <div class="col-md-4">
+        <div class="col-md-12">
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -234,8 +234,8 @@
                 </div>
             </div>
             <!-- /.widget-user -->
-        </div>
-        <div class="col-md-6">
+
+
             <div class="box box-solid">
                 <div class="box-header with-border">
                     <h3 class="box-title">Level Benefit</h3>

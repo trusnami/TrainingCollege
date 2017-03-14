@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,7 +211,49 @@
         </section>
 
         <!-- Main content -->
+        <section class="content">
+            <p></p>
+            <c:forEach var="item" items="${list}">
+                <div class="row">
 
+                    <div class="col-md-6">
+                        <!-- Box Comment -->
+                        <div class="box box-widget">
+                            <div class="box-header with-border">
+                                <div class="user-block">
+                                    <img class="img-circle" src="/img/os-x-lion-for-music.jpg" alt="User Image">
+                                    <span class="username"><a href="#">${item.classname}</a></span>
+                                    <span class="description">${item.institutionname}</span>
+                                </div>
+                                <!-- /.user-block -->
+                                <div class="box-tools">
+
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body">
+
+                                <p>${item.description}</p>
+                                <button type="button"  onclick="location='http://localhost:8080/course/subscribe?classid=${item.classid}&traineeid=${trainee.id}'"
+                                        ><i class="fa fa-share"></i> Subscribe </button>
+
+                                <span class="pull-right text-muted"> ${item.traineenumber} assigned - ${item.maxnumber} reserved</span>
+                            </div>
+                            <!-- /.box-body -->
+
+                            <!-- /.box-footer -->
+
+                            <!-- /.box-footer -->
+                        </div>
+
+                        <!-- /.box -->
+                    </div>
+
+                </div>
+            </c:forEach>
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -453,6 +498,8 @@
 <script src="/js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/js/demo.js"></script>
+
+<script>console.log(${list})</script>
 </body>
 </html>
 
