@@ -32,4 +32,27 @@ public class CourseController {
         return "redirect:/trainee//C_Subscribe";
     }
 
+    @RequestMapping("/unsubscribe")
+    public String unsubscribe(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/unsubscribe\n");
+
+        String traineeid = request.getParameter("traineeid");
+        String classid = request.getParameter("classid");
+
+        boolean result = courseService.unsubcribe(traineeid,classid);
+
+        return "redirect:/trainee/C_Unsubscribe";
+    }
+
+    @RequestMapping("/drop")
+    public String dropCourse(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/unsubscribe\n");
+
+        String traineeid = request.getParameter("traineeid");
+        String classid = request.getParameter("classid");
+
+        boolean result = courseService.dropCourse(traineeid,classid);
+
+        return "redirect:/trainee/C_Unsubscribe";
+    }
 }

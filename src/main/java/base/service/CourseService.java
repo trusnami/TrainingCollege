@@ -23,4 +23,8 @@ public interface CourseService {
 
     List<Course> getCourseByid(List<Integer> courseidList) throws Exception;
 
+    boolean unsubcribe (String traineeid,String classid) throws Exception;
+
+    boolean dropCourse (String traineeid,String classid) throws Exception;
+
 }

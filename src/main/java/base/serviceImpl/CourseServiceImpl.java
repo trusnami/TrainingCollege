@@ -156,5 +156,65 @@ public class CourseServiceImpl implements CourseService {
         return courseList;
     }
 
+    @Override
+    public boolean unsubcribe(String traineeid, String classid) throws Exception {
+        TcourseKey tcourseKey = new TcourseKey();
+        tcourseKey.setTraineeid(Integer.parseInt(traineeid));
+        tcourseKey.setClassid(Integer.parseInt(classid));
+
+        int result = tcourseMapper.deleteByPrimaryKey(tcourseKey);
+
+        Course course = courseMapper.selectByPrimaryKey(Integer.parseInt(classid));
+        TraineeExample traineeExample = new TraineeExample();
+        TraineeExample.Criteria criteria = traineeExample.createCriteria();
+        criteria.andIdEqualTo(Integer.parseInt(traineeid));
+        List<Trainee> traineeList = traineeMapper.selectByExample(traineeExample);
+        Trainee trainee = traineeList.get(0);
+
+        int traineenumber = course.getTraineenumber();
+        traineenumber--;
+        course.setTraineenumber(traineenumber);
+
+        int price = course.getPrice();
+        double balance = trainee.getBalance();
+        balance = balance + price;
+        trainee.setBalance(balance);
+
+        int result1 = courseMapper.updateByPrimaryKeySelective(course);
+        int result2 = traineeMapper.updateByPrimaryKey(trainee);
+
+        return false;
+    }
+
+    @Override
+    public boolean dropCourse(String traineeid, String classid) throws Exception {
+        TcourseKey tcourseKey = new TcourseKey();
+        tcourseKey.setTraineeid(Integer.parseInt(traineeid));
+        tcourseKey.setClassid(Integer.parseInt(classid));
+
+        int result = tcourseMapper.deleteByPrimaryKey(tcourseKey);
+
+        Course course = courseMapper.selectByPrimaryKey(Integer.parseInt(classid));
+        TraineeExample traineeExample = new TraineeExample();
+        TraineeExample.Criteria criteria = traineeExample.createCriteria();
+        criteria.andIdEqualTo(Integer.parseInt(traineeid));
+        List<Trainee> traineeList = traineeMapper.selectByExample(traineeExample);
+        Trainee trainee = traineeList.get(0);
+
+        int traineenumber = course.getTraineenumber();
+        traineenumber--;
+        course.setTraineenumber(traineenumber);
+
+        int price = course.getPrice();
+        double balance = trainee.getBalance();
+        balance = balance + price/2;
+        trainee.setBalance(balance);
+
+        int result1 = courseMapper.updateByPrimaryKeySelective(course);
+        int result2 = traineeMapper.updateByPrimaryKey(trainee);
+
+        return false;
+    }
+
 
 }

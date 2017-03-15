@@ -254,7 +254,11 @@
                                         <td>${item.maxnumber}</td>
                                         <td>${item.description}</td>
                                         <td>${item.price}</td>
-                                        <td><span class="label label-warning">unsubscibe</span></td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-warning "
+                                                    onclick="location='http://localhost:8080/course/unsubscribe?classid=${item.classid}&traineeid=${trainee.id}'"
+                                            >unsubscribe</button>
+                                            </td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -307,7 +311,9 @@
                                         <td>${item.maxnumber}</td>
                                         <td>${item.description}</td>
                                         <td>${item.price}</td>
-                                        <td><span class="label label-danger">drop</span></td>
+                                        <td><button type="button" class="btn btn-block btn-danger "
+                                                    onclick="location='http://localhost:8080/course/drop?classid=${item.classid}&traineeid=${trainee.id}'"
+                                        >drop</button></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

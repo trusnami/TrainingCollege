@@ -226,7 +226,7 @@ public class TraineeController {
         model.addAttribute("inlist",courseList1);
         model.addAttribute("postlist",courseList2);
 
-        return "/trainee/C_Unsubscribe";
+        return "/trainee/C_unsubscribe";
     }
 
     @RequestMapping("/C_Check_Withdraw")
