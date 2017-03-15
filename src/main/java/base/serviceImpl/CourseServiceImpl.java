@@ -2,10 +2,8 @@ package base.serviceImpl;
 
 import base.mapper.CourseMapper;
 import base.mapper.TcourseMapper;
-import base.model.Course;
-import base.model.CourseExample;
-import base.model.TcourseExample;
-import base.model.TcourseKey;
+import base.mapper.TraineeMapper;
+import base.model.*;
 import base.service.CourseService;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +22,8 @@ public class CourseServiceImpl implements CourseService {
     CourseMapper courseMapper;
     @Resource
     TcourseMapper tcourseMapper;
-
+    @Resource
+    TraineeMapper traineeMapper;
 
     @Override
     public ArrayList<Course> getUnsubscribedClass(int traineeid) throws Exception {
@@ -65,7 +64,9 @@ public class CourseServiceImpl implements CourseService {
                     }
                 }
                 if (!exist){
-                    result.add(course);
+                    if (course.getState()==0) {
+                        result.add(course);
+                    }
                 }
 
             }
@@ -79,7 +80,9 @@ public class CourseServiceImpl implements CourseService {
 
             while (listIterator1.hasNext()){
                 Course course = (Course) listIterator1.next();
-                result.add(course);
+                if (course.getState()==0) {
+                    result.add(course);
+                }
             }
 
         }
@@ -97,10 +100,23 @@ public class CourseServiceImpl implements CourseService {
         int result = tcourseMapper.insert(tcourseKey);
 
         Course course = courseMapper.selectByPrimaryKey(Integer.parseInt(classid));
+        TraineeExample traineeExample = new TraineeExample();
+        TraineeExample.Criteria criteria = traineeExample.createCriteria();
+        criteria.andIdEqualTo(Integer.parseInt(traineeid));
+        List<Trainee> traineeList = traineeMapper.selectByExample(traineeExample);
+        Trainee trainee = traineeList.get(0);
+
         int traineenumber = course.getTraineenumber();
         traineenumber++;
         course.setTraineenumber(traineenumber);
+
+        int price = course.getPrice();
+        double balance = trainee.getBalance();
+        balance = balance - price;
+        trainee.setBalance(balance);
+
         int result1 = courseMapper.updateByPrimaryKeySelective(course);
+        int result2 = traineeMapper.updateByPrimaryKey(trainee);
 
         return false;
     }

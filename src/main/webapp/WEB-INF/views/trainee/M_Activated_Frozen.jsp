@@ -211,132 +211,135 @@
         </section>
 
         <!-- Main content -->
-        <div class="col-md-12">
-            <!-- Widget: user widget style 1 -->
-            <div class="box box-widget widget-user-2">
-                <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-yellow">
-                    <div class="widget-user-image">
-                        <img class="img-circle" src="/img/os-x-lion-for-music.jpg" alt="User Avatar">
-                    </div>
-                    <!-- /.widget-user-image -->
-                    <h3 class="widget-user-username">id : ${trainee.id}</h3>
-                    <h5 class="widget-user-desc">${trainee.memberstate}</h5>
-                </div>
-                <div class="box-footer no-padding">
-                    <ul class="nav nav-stacked">
-                        <li><a href="#">Level <span class="pull-right badge bg-blue">${trainee.level}</span></a></li>
-                        <li><a href="#">Point <span class="pull-right badge bg-aqua">${trainee.point}</span></a></li>
-                        <li><a href="#">Balance <span class="pull-right badge bg-green">${trainee.balance}</span></a></li>
-                        <li><a href="#">Cut-off Date <span class="pull-right badge bg-red">${trainee.date}</span></a></li>
+        <section class="content">
+            <div class="row">
 
-                    </ul>
-                </div>
-            </div>
-            <!-- /.widget-user -->
-
-
-            <div class="box box-solid">
-                <div class="box-header with-border">
-                    <h3 class="box-title">Level Benefit</h3>
-                    <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
-                    </div>
-                </div>
-                <!-- /.box-header -->
-                <div class="box-body">
-                    <div class="box-group" id="accordion">
-                        <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                        <div class="panel box box-primary">
-                            <div class="box-header with-border">
-                                <h4 class="box-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
-                                        Level 1
-                                    </a>
-                                </h4>
+                <div class="col-md-12">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="box box-widget widget-user-2">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-yellow">
+                            <div class="widget-user-image">
+                                <img class="img-circle" src="/img/os-x-lion-for-music.jpg" alt="User Avatar">
                             </div>
-                            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                <div class="box-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                                    nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                                    labore sustainable VHS.
+                            <!-- /.widget-user-image -->
+                            <h3 class="widget-user-username">id : ${trainee.id}</h3>
+                            <h5 class="widget-user-desc">${trainee.memberstate}</h5>
+                        </div>
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-stacked">
+                                <li><a href="#">Level <span class="pull-right badge bg-blue">${trainee.level}</span></a></li>
+                                <li><a href="#">Point <span class="pull-right badge bg-aqua">${trainee.point}</span></a></li>
+                                <li><a href="#">Balance <span class="pull-right badge bg-green">${trainee.balance}</span></a></li>
+                                <li><a href="#">Cut-off Date <span class="pull-right badge bg-red">${trainee.date}</span></a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.widget-user -->
+
+
+                    <div class="box box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Level Benefit</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="box-group" id="accordion">
+                                <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                                <div class="panel box box-primary">
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
+                                                Level 1
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                        <div class="box-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                                            wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                                            assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+                                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                                            farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                                            labore sustainable VHS.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel box box-danger">
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+                                                Level 2
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                        <div class="box-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                                            wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                                            assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+                                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                                            farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                                            labore sustainable VHS.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel box box-success">
+                                    <div class="box-header with-border">
+                                        <h4 class="box-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
+                                                Level 3
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                        <div class="box-body">
+                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
+                                            wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                                            eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
+                                            assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
+                                            nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
+                                            farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
+                                            labore sustainable VHS.
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="panel box box-danger">
-                            <div class="box-header with-border">
-                                <h4 class="box-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
-                                        Level 2
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                <div class="box-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                                    nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                                    labore sustainable VHS.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel box box-success">
-                            <div class="box-header with-border">
-                                <h4 class="box-title">
-                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
-                                        Level 3
-                                    </a>
-                                </h4>
-                            </div>
-                            <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                                <div class="box-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3
-                                    wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla
-                                    assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred
-                                    nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer
-                                    farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-                                    labore sustainable VHS.
-                                </div>
-                            </div>
-                        </div>
+                        <!-- /.box-body -->
                     </div>
-                </div>
-                <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-        </div>
+                    <!-- /.box -->
 
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Recharge</h3>
 
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    <div class="box box-default">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Recharge</h3>
 
-                </div>
-            </div>
-            <form role="form" action="/trainee/recharge" METHOD="POST">
-                <div class="box-body">
-                    <div class="form-group">
-                        <label>choose a card</label>
-                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
-                            <option selected="selected"></option>
-                            <c:forEach var="item" items="${cardList}" >
-                                <option>
-                                        ${item.getCardnumber()}
-                                </option>
-                            </c:forEach>
-                        </select><span class="select2 select2-container select2-container--default select2-container--below"
-                                       dir="ltr" style="width: 100%;">
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+                            </div>
+                        </div>
+                        <form role="form" action="/trainee/recharge" METHOD="POST">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>choose a card</label>
+                                    <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                        <option selected="selected"></option>
+                                        <c:forEach var="item" items="${cardList}" >
+                                            <option>
+                                                    ${item.getCardnumber()}
+                                            </option>
+                                        </c:forEach>
+                                    </select><span class="select2 select2-container select2-container--default select2-container--below"
+                                                   dir="ltr" style="width: 100%;">
                     <span class="selection">
                         <span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true"
                               aria-expanded="false" tabindex="0" aria-labelledby="select2-wyno-container">
@@ -344,47 +347,51 @@
                                   title=""></span><span class="select2-selection__arrow"
                                                         role="presentation"><b role="presentation"></b>
                         </span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>recharge amount</label>
+                                    <input type="number" name="rechargeAmount" class="form-control"  placeholder="Enter recharge amount">
+                                </div>
+
+
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label>recharge amount</label>
-                        <input type="number" name="rechargeAmount" class="form-control"  placeholder="Enter recharge amount">
+
+                    <div class="box box-info">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Points Exchange</h3>
+                            <div class="box-tools pull-right">
+                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+                            </div>
+                        </div>
+                        <form role="form" action="/trainee/exchange" METHOD="POST">
+                            <div class="box-body">
+
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
+                                    <input type="text" name="money" class="form-control">
+                                    <span class="input-group-addon"><i class="fa fa-ambulance"></i></span>
+                                </div>
+
+                                <!-- /input-group -->
+                            </div>
+                            <div class="box-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </form>>
+                        <!-- /.box-body -->
                     </div>
-
-
                 </div>
-                <!-- /.box-body -->
 
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>
-        </div>
-
-        <div class="box box-info">
-            <div class="box-header with-border">
-                <h3 class="box-title">Points Exchange</h3>
-                <div class="box-tools pull-right">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
-                </div>
             </div>
-            <form role="form" action="/trainee/exchange" METHOD="POST">
-                <div class="box-body">
-
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-dollar"></i></span>
-                        <input type="text" name="money" class="form-control">
-                        <span class="input-group-addon"><i class="fa fa-ambulance"></i></span>
-                    </div>
-
-                    <!-- /input-group -->
-                </div>
-                <div class="box-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </form>>
-            <!-- /.box-body -->
-        </div>
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

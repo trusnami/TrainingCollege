@@ -216,7 +216,7 @@
             <c:forEach var="item" items="${list}">
                 <div class="row">
 
-                    <div class="col-md-6">
+                    <div class="col-xs-12">
                         <!-- Box Comment -->
                         <div class="box box-widget">
                             <div class="box-header with-border">
@@ -234,8 +234,8 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body">
-
-                                <p>${item.description}</p>
+                                <p>description :${item.description}</p>
+                                <p>price :${item.price}</p>
                                 <button type="button"  onclick="location='http://localhost:8080/course/subscribe?classid=${item.classid}&traineeid=${trainee.id}'"
                                         ><i class="fa fa-share"></i> Subscribe </button>
 

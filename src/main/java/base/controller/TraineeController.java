@@ -191,7 +191,13 @@ public class TraineeController {
     public String toU(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
 
         String username = (String) session.getAttribute("username");
-        String password = (String) session.getAttribute("password");
+        //String password = (String) session.getAttribute("password");
+
+        List<Course> courseList0 = new ArrayList<>();
+        List<Course> courseList1 = new ArrayList<>();
+        List<Course> courseList2 = new ArrayList<>();
+
+
 
         Trainee trainee = traineeService.getTraineeByUsername(username);
 
