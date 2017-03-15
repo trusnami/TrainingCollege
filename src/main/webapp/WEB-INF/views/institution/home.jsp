@@ -1,13 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: yugi
+  Date: 2017/3/15
+  Time: 19:01
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Training College | Trainee</title>
+    <title>Training College | Institution</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -46,7 +50,7 @@
 
     <header class="main-header">
         <!-- Logo -->
-        <a href="/trainee/home" class="logo">
+        <a href="/institution/Home" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>T</b>C</span>
             <!-- logo for regular state and mobile devices -->
@@ -71,7 +75,7 @@
                     <li class="dropdown user user-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <img src="/img/os-x-lion-for-music.jpg" class="user-image" alt="User Image">
-                            <span class="hidden-xs">${trainee.username}</span>
+                            <span class="hidden-xs">${institution.username}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- User image -->
@@ -79,7 +83,7 @@
                                 <img src="/img/os-x-lion-for-music.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    ${trainee.username} - ${trainee.id}
+                                    ${institution.username} - ${institution.id}
                                     <small>registered on 2017/03/12</small>
                                 </p>
                             </li>
@@ -89,17 +93,17 @@
                                     <div class="col-xs-4 text-center">
                                         <a href="#">
                                             state
-                                            ${trainee.memberstate}</a>
+                                            blank</a>
                                     </div>
                                     <div class="col-xs-4 text-center">
                                         <a href="#">
                                             balance
-                                            ${trainee.balance}</a>
+                                            blank</a>
                                     </div>
                                     <div class="col-xs-4 text-center">
                                         <a href="#">
                                             points
-                                            ${trainee.point}</a>
+                                            blank</a>
                                     </div>
                                 </div>
                                 <!-- /.row -->
@@ -131,7 +135,7 @@
                     <img src="/img/os-x-lion-for-music.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p>${trainee.username}</p>
+                    <p>${institution.username}</p>
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
             </div>
@@ -157,11 +161,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/trainee/M_Binding_Unbinding"><i class="fa fa-circle-o"></i> Binding | Unbinding </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Binding | Unbinding </a></li>
 
-                        <li><a href="/trainee/M_Activated_frozen"><i class="fa fa-circle-o"></i> Activated | Frozen </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Activated | Frozen </a></li>
 
-                        <li><a href="/trainee/M_Level_Point"><i class="fa fa-circle-o"></i> Level | Point </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Level | Point </a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -172,11 +176,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/trainee/C_Subscribe"><i class="fa fa-circle-o"></i> Subscribe </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Subscribe </a></li>
 
-                        <li><a href="/trainee/C_Unsubscribe"><i class="fa fa-circle-o"></i> Unsubscribe </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Unsubscribe </a></li>
 
-                        <li><a href="/trainee/C_Check_Withdraw"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -187,11 +191,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/trainee/I_Course"><i class="fa fa-circle-o"></i> Course </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Course </a></li>
 
-                        <li><a href="/trainee/I_Member"><i class="fa fa-circle-o"></i> Member </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Member </a></li>
 
-                        <li><a href="/trainee/I_Expense"><i class="fa fa-circle-o"></i> Expense </a></li>
+                        <li><a href="blank"><i class="fa fa-circle-o"></i> Expense </a></li>
                     </ul>
                 </li>
 
@@ -205,192 +209,14 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Course
-                <small> Unsubscribe </small>
+                HomePage
+                <small> short info</small>
             </h1>
 
         </section>
 
         <!-- Main content -->
-        <section class="content">
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">course 0</h3>
-
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tbody>
-                                <tr>
-                                    <th>course id</th>
-                                    <th>course name</th>
-                                    <th>institution id</th>
-                                    <th>institution name</th>
-                                    <th>trainee number</th>
-                                    <th>max number</th>
-                                    <th>description</th>
-                                    <th>price</th>
-                                    <th>begin date</th>
-                                    <th>end date</th>
-                                    <th>operation</th>
-                                </tr>
-                                <c:forEach var="item" items="${prelist}">
-                                    <tr>
-                                        <td>${item.classid}</td>
-                                        <td>${item.classname}</td>
-                                        <td>${item.institutionid}</td>
-                                        <td>${item.institutionname}</td>
-                                        <td>${item.traineenumber}</td>
-                                        <td>${item.maxnumber}</td>
-                                        <td>${item.description}</td>
-                                        <td>${item.price}</td>
-                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
-                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
-                                        <td>
-                                            <button type="button" class="btn btn-block btn-warning "
-                                                    onclick="location='http://localhost:8080/course/unsubscribe?classid=${item.classid}&traineeid=${trainee.id}'"
-                                            >unsubscribe</button>
-                                            </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">course 1</h3>
-
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tbody>
-                                <tr>
-                                    <th>course id</th>
-                                    <th>course name</th>
-                                    <th>institution id</th>
-                                    <th>institution name</th>
-                                    <th>trainee number</th>
-                                    <th>max number</th>
-                                    <th>description</th>
-                                    <th>price</th>
-                                    <th>begin date</th>
-                                    <th>end date</th>
-                                    <th>operation</th>
-                                </tr>
-                                <c:forEach var="item" items="${inlist}">
-                                    <tr>
-                                        <td>${item.classid}</td>
-                                        <td>${item.classname}</td>
-                                        <td>${item.institutionid}</td>
-                                        <td>${item.institutionname}</td>
-                                        <td>${item.traineenumber}</td>
-                                        <td>${item.maxnumber}</td>
-                                        <td>${item.description}</td>
-                                        <td>${item.price}</td>
-                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
-                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
-                                        <td><button type="button" class="btn btn-block btn-danger "
-                                                    onclick="location='http://localhost:8080/course/drop?classid=${item.classid}&traineeid=${trainee.id}'"
-                                        >drop</button></td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                                </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">course 2</h3>
-
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tbody>
-                                <tr>
-                                    <th>course id</th>
-                                    <th>course name</th>
-                                    <th>institution id</th>
-                                    <th>institution name</th>
-                                    <th>trainee number</th>
-                                    <th>max number</th>
-                                    <th>description</th>
-                                    <th>price</th>
-                                    <th>begin date</th>
-                                    <th>end date</th>
-                                    <th>score</th>
-                                </tr>
-                                <c:forEach var="item" items="${postlist}">
-                                    <tr>
-                                        <td>${item.classid}</td>
-                                        <td>${item.classname}</td>
-                                        <td>${item.institutionid}</td>
-                                        <td>${item.institutionname}</td>
-                                        <td>${item.traineenumber}</td>
-                                        <td>${item.maxnumber}</td>
-                                        <td>${item.description}</td>
-                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
-                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
-                                        <td>${item.price}</td>
-                                        <td>89</td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody></table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-            </div>
-
-        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -637,4 +463,5 @@
 <script src="/js/demo.js"></script>
 </body>
 </html>
+
 

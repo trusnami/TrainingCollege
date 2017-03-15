@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -235,7 +236,7 @@
                             <!-- /.box-header -->
                             <div class="box-body">
                                 <p>description :${item.description}</p>
-                                <p>price :${item.price}</p>
+                                <p>price :${item.price} ---- begin date :<fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/> ---- end date :<fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></p>
                                 <button type="button"  onclick="location='http://localhost:8080/course/subscribe?classid=${item.classid}&traineeid=${trainee.id}'"
                                         ><i class="fa fa-share"></i> Subscribe </button>
 

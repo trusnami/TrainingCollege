@@ -1,6 +1,8 @@
 package base.model;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class CourseExample {
@@ -102,6 +104,32 @@ public class CourseExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andClassidIsNull() {
@@ -614,63 +642,123 @@ public class CourseExample {
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNull() {
-            addCriterion("state is null");
+        public Criteria andBegindateIsNull() {
+            addCriterion("begindate is null");
             return (Criteria) this;
         }
 
-        public Criteria andStateIsNotNull() {
-            addCriterion("state is not null");
+        public Criteria andBegindateIsNotNull() {
+            addCriterion("begindate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStateEqualTo(Integer value) {
-            addCriterion("state =", value, "state");
+        public Criteria andBegindateEqualTo(Date value) {
+            addCriterionForJDBCDate("begindate =", value, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotEqualTo(Integer value) {
-            addCriterion("state <>", value, "state");
+        public Criteria andBegindateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("begindate <>", value, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThan(Integer value) {
-            addCriterion("state >", value, "state");
+        public Criteria andBegindateGreaterThan(Date value) {
+            addCriterionForJDBCDate("begindate >", value, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateGreaterThanOrEqualTo(Integer value) {
-            addCriterion("state >=", value, "state");
+        public Criteria andBegindateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("begindate >=", value, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThan(Integer value) {
-            addCriterion("state <", value, "state");
+        public Criteria andBegindateLessThan(Date value) {
+            addCriterionForJDBCDate("begindate <", value, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateLessThanOrEqualTo(Integer value) {
-            addCriterion("state <=", value, "state");
+        public Criteria andBegindateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("begindate <=", value, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateIn(List<Integer> values) {
-            addCriterion("state in", values, "state");
+        public Criteria andBegindateIn(List<Date> values) {
+            addCriterionForJDBCDate("begindate in", values, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotIn(List<Integer> values) {
-            addCriterion("state not in", values, "state");
+        public Criteria andBegindateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("begindate not in", values, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateBetween(Integer value1, Integer value2) {
-            addCriterion("state between", value1, value2, "state");
+        public Criteria andBegindateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("begindate between", value1, value2, "begindate");
             return (Criteria) this;
         }
 
-        public Criteria andStateNotBetween(Integer value1, Integer value2) {
-            addCriterion("state not between", value1, value2, "state");
+        public Criteria andBegindateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("begindate not between", value1, value2, "begindate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateIsNull() {
+            addCriterion("enddate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateIsNotNull() {
+            addCriterion("enddate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateEqualTo(Date value) {
+            addCriterionForJDBCDate("enddate =", value, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateNotEqualTo(Date value) {
+            addCriterionForJDBCDate("enddate <>", value, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateGreaterThan(Date value) {
+            addCriterionForJDBCDate("enddate >", value, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("enddate >=", value, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateLessThan(Date value) {
+            addCriterionForJDBCDate("enddate <", value, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("enddate <=", value, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateIn(List<Date> values) {
+            addCriterionForJDBCDate("enddate in", values, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateNotIn(List<Date> values) {
+            addCriterionForJDBCDate("enddate not in", values, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("enddate between", value1, value2, "enddate");
+            return (Criteria) this;
+        }
+
+        public Criteria andEnddateNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("enddate not between", value1, value2, "enddate");
             return (Criteria) this;
         }
     }

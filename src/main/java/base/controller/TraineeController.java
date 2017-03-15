@@ -1,5 +1,6 @@
 package base.controller;
 
+import base.helper.CourseState;
 import base.model.Card;
 import base.model.Course;
 import base.model.TcourseKey;
@@ -7,6 +8,7 @@ import base.model.Trainee;
 import base.service.CardService;
 import base.service.CourseService;
 import base.service.TraineeService;
+import base.utils.MyTool;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -204,13 +206,13 @@ public class TraineeController {
         ListIterator listIterator = courseList.listIterator();
         while (listIterator.hasNext()){
             Course course = (Course) listIterator.next();
-            int state = course.getState();
+            CourseState state = MyTool.courseStateCheck(course.getBegindate(),course.getEnddate());
             switch (state){
-                case 0:
+                case PRE:
                     courseList0.add(course);break;
-                case 1:
+                case IN:
                     courseList1.add(course);break;
-                case 2:
+                case POST:
                     courseList2.add(course);break;
             }
         }

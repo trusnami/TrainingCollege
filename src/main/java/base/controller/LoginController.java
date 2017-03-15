@@ -50,7 +50,7 @@ public class LoginController {
             case 1:
                 System.out.println("trainee");return "redirect:/trainee/Home";
             case 2:
-                System.out.println("institution");break;
+                System.out.println("institution");return "redirect:/institution/Home";
             case 3:
                 System.out.println("wrong password");return "wrong_password";
             case 4:

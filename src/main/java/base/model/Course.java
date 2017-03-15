@@ -1,5 +1,7 @@
 package base.model;
 
+import java.util.Date;
+
 public class Course {
     private Integer classid;
 
@@ -17,7 +19,9 @@ public class Course {
 
     private Integer price;
 
-    private Integer state;
+    private Date begindate;
+
+    private Date enddate;
 
     public Integer getClassid() {
         return classid;
@@ -83,11 +87,19 @@ public class Course {
         this.price = price;
     }
 
-    public Integer getState() {
-        return state;
+    public Date getBegindate() {
+        return begindate;
     }
 
-    public void setState(Integer state) {
-        this.state = state;
+    public void setBegindate(Date begindate) {
+        this.begindate = begindate;
+    }
+
+    public Date getEnddate() {
+        return enddate;
+    }
+
+    public void setEnddate(Date enddate) {
+        this.enddate = enddate;
     }
 }

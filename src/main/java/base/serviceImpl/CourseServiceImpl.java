@@ -1,10 +1,12 @@
 package base.serviceImpl;
 
+import base.helper.CourseState;
 import base.mapper.CourseMapper;
 import base.mapper.TcourseMapper;
 import base.mapper.TraineeMapper;
 import base.model.*;
 import base.service.CourseService;
+import base.utils.MyTool;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -64,7 +66,8 @@ public class CourseServiceImpl implements CourseService {
                     }
                 }
                 if (!exist){
-                    if (course.getState()==0) {
+                    CourseState state = MyTool.courseStateCheck(course.getBegindate(),course.getEnddate());
+                    if (state == CourseState.PRE) {
                         result.add(course);
                     }
                 }
@@ -80,7 +83,8 @@ public class CourseServiceImpl implements CourseService {
 
             while (listIterator1.hasNext()){
                 Course course = (Course) listIterator1.next();
-                if (course.getState()==0) {
+                CourseState state = MyTool.courseStateCheck(course.getBegindate(),course.getEnddate());
+                if (state == CourseState.PRE) {
                     result.add(course);
                 }
             }

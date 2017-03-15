@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -242,6 +243,8 @@
                                     <th>max number</th>
                                     <th>description</th>
                                     <th>price</th>
+                                    <th>begin date</th>
+                                    <th>end date</th>
                                     <th>operation</th>
                                 </tr>
                                 <c:forEach var="item" items="${prelist}">
@@ -254,6 +257,8 @@
                                         <td>${item.maxnumber}</td>
                                         <td>${item.description}</td>
                                         <td>${item.price}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
                                         <td>
                                             <button type="button" class="btn btn-block btn-warning "
                                                     onclick="location='http://localhost:8080/course/unsubscribe?classid=${item.classid}&traineeid=${trainee.id}'"
@@ -299,6 +304,8 @@
                                     <th>max number</th>
                                     <th>description</th>
                                     <th>price</th>
+                                    <th>begin date</th>
+                                    <th>end date</th>
                                     <th>operation</th>
                                 </tr>
                                 <c:forEach var="item" items="${inlist}">
@@ -311,6 +318,8 @@
                                         <td>${item.maxnumber}</td>
                                         <td>${item.description}</td>
                                         <td>${item.price}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
                                         <td><button type="button" class="btn btn-block btn-danger "
                                                     onclick="location='http://localhost:8080/course/drop?classid=${item.classid}&traineeid=${trainee.id}'"
                                         >drop</button></td>
@@ -354,6 +363,8 @@
                                     <th>max number</th>
                                     <th>description</th>
                                     <th>price</th>
+                                    <th>begin date</th>
+                                    <th>end date</th>
                                     <th>score</th>
                                 </tr>
                                 <c:forEach var="item" items="${postlist}">
@@ -365,6 +376,8 @@
                                         <td>${item.traineenumber}</td>
                                         <td>${item.maxnumber}</td>
                                         <td>${item.description}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
                                         <td>${item.price}</td>
                                         <td>89</td>
                                     </tr>
