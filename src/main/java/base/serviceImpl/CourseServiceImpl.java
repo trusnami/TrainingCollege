@@ -120,4 +120,41 @@ public class CourseServiceImpl implements CourseService {
 
         return false;
     }
+
+    @Override
+    public List<Integer> getChosenCourseid(int traineeid) throws Exception {
+        TcourseExample tcourseExample = new TcourseExample();
+        TcourseExample.Criteria criteria = tcourseExample.createCriteria();
+        criteria.andTraineeidEqualTo(traineeid);
+        List<TcourseKey> tcourseKeyList = tcourseMapper.selectByExample(tcourseExample);
+        List<Integer> courseidList = new ArrayList<>();
+        ListIterator listIterator = tcourseKeyList.listIterator();
+        while (listIterator.hasNext()){
+            TcourseKey tcourseKey = (TcourseKey) listIterator.next();
+            Integer courseid = tcourseKey.getClassid();
+            courseidList.add(courseid);
+        }
+
+        return courseidList;
+    }
+
+    @Override
+    public Course getCourseByid(int classid) throws Exception {
+        Course course = courseMapper.selectByPrimaryKey(classid);
+        return course;
+    }
+
+    @Override
+    public List<Course> getCourseByid(List<Integer> courseidList) throws Exception {
+        List<Course> courseList = new ArrayList<>();
+        ListIterator listIterator = courseidList.listIterator();
+        while (listIterator.hasNext()){
+            Integer courseid = (Integer) listIterator.next();
+            Course course = getCourseByid(courseid);
+            courseList.add(course);
+        }
+        return courseList;
+    }
+
+
 }

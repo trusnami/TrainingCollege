@@ -2,6 +2,7 @@ package base.controller;
 
 import base.model.Card;
 import base.model.Course;
+import base.model.TcourseKey;
 import base.model.Trainee;
 import base.service.CardService;
 import base.service.CourseService;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by yugi on 2017/3/13.
@@ -64,9 +66,9 @@ public class TraineeController {
             return "/trainee/TraineeHome";
         }
 
-        for (int i = 0;i<cardList.size();i++){
-            System.out.print(cardList.get(i).getCardnumber()+"\n");
-        }
+//        for (int i = 0;i<cardList.size();i++){
+//            System.out.print(cardList.get(i).getCardnumber()+"\n");
+//        }
 
         model.addAttribute(cardList);
 
@@ -76,7 +78,7 @@ public class TraineeController {
     @RequestMapping("/M_Activated_frozen")
     public String toAF(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
 
-        System.out.print("/M_Activated_frozen\n");
+//        System.out.print("/M_Activated_frozen\n");
         String username = (String) session.getAttribute("username");
         //String password = (String) session.getAttribute("password");
 
@@ -92,9 +94,9 @@ public class TraineeController {
             return "/trainee/TraineeHome";
         }
 
-        for (int i = 0;i<cardList.size();i++){
-            System.out.print(cardList.get(i).getCardnumber()+"\n");
-        }
+//        for (int i = 0;i<cardList.size();i++){
+//            System.out.print(cardList.get(i).getCardnumber()+"\n");
+//        }
 
         model.addAttribute(cardList);
 
@@ -103,7 +105,7 @@ public class TraineeController {
 
     @RequestMapping("/recharge")
     public String recharge(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-        System.out.print("/recharge\n");
+//        System.out.print("/recharge\n");
         String number = request.getParameter("rechargeAmount");
         String username = (String) session.getAttribute("username");
 
@@ -115,21 +117,21 @@ public class TraineeController {
 
         boolean result = traineeService.addBalance(trainee);
 
-        System.out.print(number+"\n");
+//        System.out.print(number+"\n");
 
         return "redirect:/trainee/M_Activated_frozen";
     }
 
     @RequestMapping("exchange")
     public  String exchange(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-        System.out.print("/exchange\n");
+//        System.out.print("/exchange\n");
 
         String money = request.getParameter("money");
         String username = (String) session.getAttribute("username");
 
         int result = traineeService.exchange(username,Integer.parseInt(money));
 
-        System.out.print("exchange result: "+result+"\n");
+//        System.out.print("exchange result: "+result+"\n");
 
         switch (result){
             case 0:
@@ -160,7 +162,7 @@ public class TraineeController {
 
     @RequestMapping("/C_Subscribe")
     public String toS(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-        System.out.println("/C_Subscribe");
+//        System.out.println("/C_Subscribe");
         String username = (String) session.getAttribute("username");
         //String password = (String) session.getAttribute("password");
 
@@ -169,13 +171,13 @@ public class TraineeController {
         int traineeid = trainee.getId();
         List<Course> courseArrayList = courseService.getUnsubscribedClass(traineeid);
 
-        if (courseArrayList!=null){
-            for (int i=0;i<courseArrayList.size();i++){
-                System.out.println(courseArrayList.get(i).getClassid());
-            }
-        }
+//        if (courseArrayList!=null){
+//            for (int i=0;i<courseArrayList.size();i++){
+//                System.out.println(courseArrayList.get(i).getClassid());
+//            }
+//        }
 
-        System.out.println("size:"+courseArrayList.size());
+//        System.out.println("size:"+courseArrayList.size());
 
 //        List<String> stringList = new ArrayList<>();
 //        stringList.add("a");
@@ -196,12 +198,33 @@ public class TraineeController {
         List<Course> courseList0 = new ArrayList<>();
         List<Course> courseList1 = new ArrayList<>();
         List<Course> courseList2 = new ArrayList<>();
-
-
-
         Trainee trainee = traineeService.getTraineeByUsername(username);
+        List<Integer> courseidList = courseService.getChosenCourseid(trainee.getId());
+        List<Course> courseList = courseService.getCourseByid(courseidList);
+        ListIterator listIterator = courseList.listIterator();
+        while (listIterator.hasNext()){
+            Course course = (Course) listIterator.next();
+            int state = course.getState();
+            switch (state){
+                case 0:
+                    courseList0.add(course);break;
+                case 1:
+                    courseList1.add(course);break;
+                case 2:
+                    courseList2.add(course);break;
+            }
+        }
+
+        System.out.println("id size:"+courseidList.size());
+        System.out.println("course size:"+courseList.size());
+        System.out.println("course0 size:"+courseList0.size());
+        System.out.println("course1 size:"+courseList1.size());
+        System.out.println("course2 size:"+courseList2.size());
 
         model.addAttribute(trainee);
+        model.addAttribute("prelist",courseList0);
+        model.addAttribute("inlist",courseList1);
+        model.addAttribute("postlist",courseList2);
 
         return "/trainee/C_Unsubscribe";
     }
