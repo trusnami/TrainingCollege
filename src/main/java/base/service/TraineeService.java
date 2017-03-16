@@ -13,7 +13,7 @@ public interface TraineeService {
 
     Trainee getTraineeByUsername(String username) throws Exception;
 
-    boolean addBalance(Trainee trainee) throws Exception;
+    boolean addBalance(String username,String number) throws Exception;
 
     int exchange(String username,int money) throws  Exception;
 

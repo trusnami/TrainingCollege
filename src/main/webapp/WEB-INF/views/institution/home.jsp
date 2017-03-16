@@ -161,11 +161,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Binding | Unbinding </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Binding | Unbinding </a></li>
 
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Activated | Frozen </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Activated | Frozen </a></li>
 
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Level | Point </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Level | Point </a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -176,11 +176,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Subscribe </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Subscribe </a></li>
 
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Unsubscribe </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Unsubscribe </a></li>
 
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -191,11 +191,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Course </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Course </a></li>
 
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Member </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Member </a></li>
 
-                        <li><a href="blank"><i class="fa fa-circle-o"></i> Expense </a></li>
+                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Expense </a></li>
                     </ul>
                 </li>
 

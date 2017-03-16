@@ -1,12 +1,17 @@
 package base.serviceImpl;
 
+import base.mapper.ExchangelogMapper;
+import base.mapper.RechargelogMapper;
 import base.mapper.TraineeMapper;
+import base.model.Exchangelog;
+import base.model.Rechargelog;
 import base.model.Trainee;
 import base.model.TraineeExample;
 import base.service.TraineeService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,6 +22,10 @@ public class TraineeServiceImpl implements TraineeService{
 
     @Resource
     TraineeMapper traineeMapper;
+    @Resource
+    RechargelogMapper rechargelogMapper;
+    @Resource
+    ExchangelogMapper exchangelogMapper;
 
     @Override
     public Trainee getTraineeByUsername(String username) throws Exception {
@@ -32,10 +41,19 @@ public class TraineeServiceImpl implements TraineeService{
     }
 
     @Override
-    public boolean addBalance(Trainee trainee) throws Exception {
+    public boolean addBalance(String username,String number) throws Exception {
 
+        Trainee trainee = getTraineeByUsername(username);
+        int amount = Integer.parseInt(number);
+        double balance = trainee.getBalance();
+        balance+=amount;
+        trainee.setBalance(balance);
+        Rechargelog  rechargelog= new Rechargelog();
+        rechargelog.setAmount(amount);
+        rechargelog.setTime(new Date());
+        rechargelog.setTraineeid(trainee.getId());
         int result = traineeMapper.updateByPrimaryKey(trainee);
-
+        int result1 = rechargelogMapper.insert(rechargelog);
         return false;
     }
 
@@ -46,40 +64,40 @@ public class TraineeServiceImpl implements TraineeService{
         double balance = trainee.getBalance();
         double point =trainee.getPoint();
         int level = trainee.getLevel();
-
+        int deduction = 0;
         switch (level){
             case 0:
                 return 1;
             case 1:
-                if (point<money*30){
+                deduction=money*30;
+                if (point<deduction){
                     return 2;
                 }
-                balance=balance+money;
-                point=point-money*30;
-                trainee.setBalance(balance);
-                trainee.setPoint(point);
                 break;
             case 2:
-                if (point<money*30){
+                deduction=money*25;
+                if (point<deduction){
                     return 2;
                 }
-                balance=balance+money;
-                point=point-money*25;
-                trainee.setBalance(balance);
-                trainee.setPoint(point);
                 break;
             case 3:
-                if (point<money*30){
+                deduction=money*20;
+                if (point<deduction){
                     return 2;
                 }
-                balance=balance+money;
-                point=point-money*20;
-                trainee.setBalance(balance);
-                trainee.setPoint(point);
                 break;
         }
-
+        balance=balance+money;
+        point=point-deduction;
+        Exchangelog exchangelog = new Exchangelog();
+        exchangelog.setTraineeid(trainee.getId());
+        exchangelog.setTime(new Date());
+        exchangelog.setAmount(money);
+        exchangelog.setPoint(deduction);
+        trainee.setBalance(balance);
+        trainee.setPoint(point);
         traineeMapper.updateByPrimaryKey(trainee);
+        exchangelogMapper.insert(exchangelog);
         return 0;
     }
 

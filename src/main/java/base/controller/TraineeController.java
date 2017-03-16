@@ -107,33 +107,27 @@ public class TraineeController {
 
     @RequestMapping("/recharge")
     public String recharge(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-//        System.out.print("/recharge\n");
+        System.out.print("/recharge\n");
         String number = request.getParameter("rechargeAmount");
         String username = (String) session.getAttribute("username");
+        System.out.print(number+"\n");
+        boolean result = traineeService.addBalance(username,number);
 
-        Trainee trainee = traineeService.getTraineeByUsername(username);
 
-        double balance = trainee.getBalance();
-        balance+=Double.parseDouble(number);
-        trainee.setBalance(balance);
-
-        boolean result = traineeService.addBalance(trainee);
-
-//        System.out.print(number+"\n");
 
         return "redirect:/trainee/M_Activated_frozen";
     }
 
     @RequestMapping("exchange")
     public  String exchange(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-//        System.out.print("/exchange\n");
+        System.out.print("/exchange\n");
 
         String money = request.getParameter("money");
         String username = (String) session.getAttribute("username");
 
         int result = traineeService.exchange(username,Integer.parseInt(money));
 
-//        System.out.print("exchange result: "+result+"\n");
+        System.out.print("exchange result: "+result+"\n");
 
         switch (result){
             case 0:

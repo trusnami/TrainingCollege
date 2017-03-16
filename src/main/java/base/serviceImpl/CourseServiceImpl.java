@@ -1,9 +1,7 @@
 package base.serviceImpl;
 
 import base.helper.CourseState;
-import base.mapper.CourseMapper;
-import base.mapper.TcourseMapper;
-import base.mapper.TraineeMapper;
+import base.mapper.*;
 import base.model.*;
 import base.service.CourseService;
 import base.utils.MyTool;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -26,6 +25,12 @@ public class CourseServiceImpl implements CourseService {
     TcourseMapper tcourseMapper;
     @Resource
     TraineeMapper traineeMapper;
+    @Resource
+    SubscribelogMapper subscribelogMapper;
+    @Resource
+    UnsubscribelogMapper unsubscribelogMapper;
+    @Resource
+    DroplogMapper droplogMapper;
 
     @Override
     public ArrayList<Course> getUnsubscribedClass(int traineeid) throws Exception {
@@ -119,6 +124,13 @@ public class CourseServiceImpl implements CourseService {
         balance = balance - price;
         trainee.setBalance(balance);
 
+        Subscribelog subscribelog = new Subscribelog();
+        subscribelog.setTime(new Date());
+        subscribelog.setTraineeid(Integer.parseInt(traineeid));
+        subscribelog.setCourseid(Integer.parseInt(classid));
+        subscribelog.setDeduction(price);
+
+        int result0 = subscribelogMapper.insert(subscribelog);
         int result1 = courseMapper.updateByPrimaryKeySelective(course);
         int result2 = traineeMapper.updateByPrimaryKey(trainee);
 
@@ -184,6 +196,13 @@ public class CourseServiceImpl implements CourseService {
         balance = balance + price;
         trainee.setBalance(balance);
 
+        Unsubscribelog unsubscribelog = new Unsubscribelog();
+        unsubscribelog.setCourseid(Integer.parseInt(classid));
+        unsubscribelog.setTime(new Date());
+        unsubscribelog.setTraineeid(Integer.parseInt(traineeid));
+        unsubscribelog.setRefund(price);
+
+        int result0 = unsubscribelogMapper.insert(unsubscribelog);
         int result1 = courseMapper.updateByPrimaryKeySelective(course);
         int result2 = traineeMapper.updateByPrimaryKey(trainee);
 
@@ -214,6 +233,13 @@ public class CourseServiceImpl implements CourseService {
         balance = balance + price/2;
         trainee.setBalance(balance);
 
+        Droplog droplog = new Droplog();
+        droplog.setRefund(price/2);
+        droplog.setCourseid(Integer.parseInt(classid));
+        droplog.setTraineeid(Integer.parseInt(traineeid));
+        droplog.setTime(new Date());
+
+        int result0 = droplogMapper.insert(droplog);
         int result1 = courseMapper.updateByPrimaryKeySelective(course);
         int result2 = traineeMapper.updateByPrimaryKey(trainee);
 
