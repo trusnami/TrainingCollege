@@ -155,32 +155,28 @@
                 <li class="header">MAIN NAVIGATION</li>
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-share"></i> <span>Membership</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Binding | Unbinding </a></li>
-
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Activated | Frozen </a></li>
-
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Level | Point </a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
                         <i class="fa fa-share"></i> <span>Course</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Subscribe </a></li>
+                        <li><a href="/institution/Launch_Course"><i class="fa fa-circle-o"></i> launch Course </a></li>
 
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Unsubscribe </a></li>
+                        <li><a href="/institution//Modify_Course"><i class="fa fa-circle-o"></i> modify Course </a></li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-share"></i> <span>Trainee</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>
 
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>
+                        <li><a href="/institution/Score_Registrate"><i class="fa fa-circle-o"></i> score registrate </a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -191,11 +187,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Course </a></li>
+                        <li><a href="/institution/Course_Income"><i class="fa fa-circle-o"></i> Course income</a></li>
 
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Member </a></li>
-
-                        <li><a href="blank.jsp"><i class="fa fa-circle-o"></i> Expense </a></li>
                     </ul>
                 </li>
 

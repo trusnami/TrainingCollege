@@ -30,4 +30,49 @@ public class InstitutionController {
         return "/institution/home";
     }
 
+    @RequestMapping("/Launch_Course")
+    public String launchingCourse(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution/Home");
+        String username = (String) session.getAttribute("username");
+        Institution institution = institutionService.getInstitutionByUsername(username);
+        model.addAttribute(institution);
+        return "/institution/Launch_course";
+    }
+
+    @RequestMapping("/Modify_Course")
+    public String modifyCourse(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution/Home");
+        String username = (String) session.getAttribute("username");
+        Institution institution = institutionService.getInstitutionByUsername(username);
+        model.addAttribute(institution);
+        return "/institution/Modify_course";
+    }
+
+    @RequestMapping("/Subscribe_Log")
+    public String subscribeLog(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution/Home");
+        String username = (String) session.getAttribute("username");
+        Institution institution = institutionService.getInstitutionByUsername(username);
+        model.addAttribute(institution);
+        return "/institution/Subscribe_log";
+    }
+
+    @RequestMapping("/Score_Registrate")
+    public String scoreRegistrate(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution/Home");
+        String username = (String) session.getAttribute("username");
+        Institution institution = institutionService.getInstitutionByUsername(username);
+        model.addAttribute(institution);
+        return "/institution//Score_registrate";
+    }
+
+    @RequestMapping("/Course_Income")
+    public String courseIncome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution/Home");
+        String username = (String) session.getAttribute("username");
+        Institution institution = institutionService.getInstitutionByUsername(username);
+        model.addAttribute(institution);
+        return "/institution//Course_income";
+    }
+
 }

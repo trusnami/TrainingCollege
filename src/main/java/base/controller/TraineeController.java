@@ -259,11 +259,12 @@ public class TraineeController {
 
         Trainee trainee = traineeService.getTraineeByUsername(username);
 
-        List<Droplog> droplogList = logService.getDroplogByID(trainee.getId());
-        List<Exchangelog> exchangelogList = logService.getExchangelogByID(trainee.getId());
-        List<Rechargelog> rechargelogList = logService.getRechargelogByID(trainee.getId());
-        List<Subscribelog> subscribelogList = logService.getSubscribelogByID(trainee.getId());
-        List<Unsubscribelog> unsubscribelogList = logService.getUnsubscribelogByID(trainee.getId());
+        Integer id = trainee.getId();
+        List<Droplog> droplogList = logService.getDroplogByID(id);
+        List<Exchangelog> exchangelogList = logService.getExchangelogByID(id);
+        List<Rechargelog> rechargelogList = logService.getRechargelogByID(id);
+        List<Subscribelog> subscribelogList = logService.getSubscribelogByID(id);
+        List<Unsubscribelog> unsubscribelogList = logService.getUnsubscribelogByID(id);
 
         model.addAttribute(trainee);
         model.addAttribute(droplogList);
