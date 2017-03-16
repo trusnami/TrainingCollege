@@ -1,12 +1,10 @@
 package base.controller;
 
 import base.helper.CourseState;
-import base.model.Card;
-import base.model.Course;
-import base.model.TcourseKey;
-import base.model.Trainee;
+import base.model.*;
 import base.service.CardService;
 import base.service.CourseService;
+import base.service.LogService;
 import base.service.TraineeService;
 import base.utils.MyTool;
 import org.springframework.stereotype.Controller;
@@ -34,6 +32,8 @@ public class TraineeController {
     CardService cardService;
     @Resource
     CourseService courseService;
+    @Resource
+    LogService logService;
 
     @RequestMapping("/Home")
     public String toHome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
@@ -259,9 +259,20 @@ public class TraineeController {
 
         Trainee trainee = traineeService.getTraineeByUsername(username);
 
-        model.addAttribute(trainee);
+        List<Droplog> droplogList = logService.getDroplogByID(trainee.getId());
+        List<Exchangelog> exchangelogList = logService.getExchangelogByID(trainee.getId());
+        List<Rechargelog> rechargelogList = logService.getRechargelogByID(trainee.getId());
+        List<Subscribelog> subscribelogList = logService.getSubscribelogByID(trainee.getId());
+        List<Unsubscribelog> unsubscribelogList = logService.getUnsubscribelogByID(trainee.getId());
 
-        return "/trainee/I_Member";
+        model.addAttribute(trainee);
+        model.addAttribute(droplogList);
+        model.addAttribute(exchangelogList);
+        model.addAttribute(rechargelogList);
+        model.addAttribute(subscribelogList);
+        model.addAttribute(unsubscribelogList);
+
+        return "/trainee/I_member";
     }
 
     @RequestMapping("/I_Expense")

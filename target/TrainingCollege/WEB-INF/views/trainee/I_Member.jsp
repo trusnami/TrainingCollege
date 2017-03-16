@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,7 +211,159 @@
         </section>
 
         <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> Recharge Log </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th>time</th>
+                                        <th>amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <c:forEach var="item" items="${rechargelogList}">
+                                    <tr>
+                                        <td>${item.time}</td>
+                                        <td>${item.amount}</td>
+                                    </tr>
+                                </c:forEach>
+                                </tbody>
+                            </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
 
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> Exchange Log </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>amount</th>
+                                                <th>time</th>
+                                                <th>point</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach var="item" items="${exchangelogList}">
+                                                <tr>
+                                                    <td>${item.amount}</td>
+                                                    <td>${item.time}</td>
+                                                    <td>${item.point}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-6">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> Subcribe Log</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>course id</th>
+                                                <th>time</th>
+                                                <th>deduction</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach var="item" items="${subscribelogList}">
+                                                <tr>
+                                                    <td>${item.courseid}</td>
+                                                    <td>${item.time}</td>
+                                                    <td>${item.deduction}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> Unsubscribe/Drop Log </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>course id</th>
+                                                <th>time</th>
+                                                <th>refund</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach var="item" items="${unsubscribelogList}">
+                                                <tr role="row",class="odd">
+                                                    <td>${item.courseid}</td>
+                                                    <td>${item.time}</td>
+                                                    <td>${item.refund}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            <c:forEach var="item" items="${droplogList}">
+                                                <tr role="row",class="even">
+                                                    <td>${item.courseid}</td>
+                                                    <td>${item.time}</td>
+                                                    <td>${item.refund}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
