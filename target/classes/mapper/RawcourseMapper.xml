@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="base.mapper.RawcourseMapper" >
+  <resultMap id="BaseResultMap" type="base.model.Rawcourse" >
+    <id column="courseid" property="courseid" jdbcType="INTEGER" />
+    <result column="coursename" property="coursename" jdbcType="VARCHAR" />
+    <result column="institutionid" property="institutionid" jdbcType="INTEGER" />
+    <result column="institutionname" property="institutionname" jdbcType="VARCHAR" />
+    <result column="maxnumber" property="maxnumber" jdbcType="INTEGER" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+    <result column="price" property="price" jdbcType="INTEGER" />
+    <result column="begindate" property="begindate" jdbcType="DATE" />
+    <result column="enddate" property="enddate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    courseid, coursename, institutionid, institutionname, maxnumber, description, price, 
+    begindate, enddate
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="base.model.RawcourseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from rawcourse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rawcourse
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rawcourse
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="base.model.RawcourseExample" >
+    delete from rawcourse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="base.model.Rawcourse" >
+    insert into rawcourse (courseid, coursename, institutionid, 
+      institutionname, maxnumber, description, 
+      price, begindate, enddate
+      )
+    values (#{courseid,jdbcType=INTEGER}, #{coursename,jdbcType=VARCHAR}, #{institutionid,jdbcType=INTEGER}, 
+      #{institutionname,jdbcType=VARCHAR}, #{maxnumber,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{price,jdbcType=INTEGER}, #{begindate,jdbcType=DATE}, #{enddate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="base.model.Rawcourse" >
+    insert into rawcourse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="courseid != null" >
+        courseid,
+      </if>
+      <if test="coursename != null" >
+        coursename,
+      </if>
+      <if test="institutionid != null" >
+        institutionid,
+      </if>
+      <if test="institutionname != null" >
+        institutionname,
+      </if>
+      <if test="maxnumber != null" >
+        maxnumber,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="begindate != null" >
+        begindate,
+      </if>
+      <if test="enddate != null" >
+        enddate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="courseid != null" >
+        #{courseid,jdbcType=INTEGER},
+      </if>
+      <if test="coursename != null" >
+        #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="institutionid != null" >
+        #{institutionid,jdbcType=INTEGER},
+      </if>
+      <if test="institutionname != null" >
+        #{institutionname,jdbcType=VARCHAR},
+      </if>
+      <if test="maxnumber != null" >
+        #{maxnumber,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="begindate != null" >
+        #{begindate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        #{enddate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="base.model.RawcourseExample" resultType="java.lang.Integer" >
+    select count(*) from rawcourse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update rawcourse
+    <set >
+      <if test="record.courseid != null" >
+        courseid = #{record.courseid,jdbcType=INTEGER},
+      </if>
+      <if test="record.coursename != null" >
+        coursename = #{record.coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.institutionid != null" >
+        institutionid = #{record.institutionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.institutionname != null" >
+        institutionname = #{record.institutionname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.maxnumber != null" >
+        maxnumber = #{record.maxnumber,jdbcType=INTEGER},
+      </if>
+      <if test="record.description != null" >
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null" >
+        price = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.begindate != null" >
+        begindate = #{record.begindate,jdbcType=DATE},
+      </if>
+      <if test="record.enddate != null" >
+        enddate = #{record.enddate,jdbcType=DATE},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update rawcourse
+    set courseid = #{record.courseid,jdbcType=INTEGER},
+      coursename = #{record.coursename,jdbcType=VARCHAR},
+      institutionid = #{record.institutionid,jdbcType=INTEGER},
+      institutionname = #{record.institutionname,jdbcType=VARCHAR},
+      maxnumber = #{record.maxnumber,jdbcType=INTEGER},
+      description = #{record.description,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=INTEGER},
+      begindate = #{record.begindate,jdbcType=DATE},
+      enddate = #{record.enddate,jdbcType=DATE}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="base.model.Rawcourse" >
+    update rawcourse
+    <set >
+      <if test="coursename != null" >
+        coursename = #{coursename,jdbcType=VARCHAR},
+      </if>
+      <if test="institutionid != null" >
+        institutionid = #{institutionid,jdbcType=INTEGER},
+      </if>
+      <if test="institutionname != null" >
+        institutionname = #{institutionname,jdbcType=VARCHAR},
+      </if>
+      <if test="maxnumber != null" >
+        maxnumber = #{maxnumber,jdbcType=INTEGER},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="begindate != null" >
+        begindate = #{begindate,jdbcType=DATE},
+      </if>
+      <if test="enddate != null" >
+        enddate = #{enddate,jdbcType=DATE},
+      </if>
+    </set>
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="base.model.Rawcourse" >
+    update rawcourse
+    set coursename = #{coursename,jdbcType=VARCHAR},
+      institutionid = #{institutionid,jdbcType=INTEGER},
+      institutionname = #{institutionname,jdbcType=VARCHAR},
+      maxnumber = #{maxnumber,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      price = #{price,jdbcType=INTEGER},
+      begindate = #{begindate,jdbcType=DATE},
+      enddate = #{enddate,jdbcType=DATE}
+    where courseid = #{courseid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -228,13 +228,13 @@
                         </div>
                     </div>
                     <!-- /.box-header -->
-                    <form role="form">
+                    <form action="/institution/Launch" method="POST">
                         <div class="box-body" style="display: block;">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Course name</label>
-                                        <input type="text" class="form-control" placeholder="course name">
+                                        <input type="text" name="courseName" class="form-control" placeholder="course name">
                                     </div>
                                     <!-- /.form-group -->
                                     <div class="form-group">
@@ -244,38 +244,39 @@
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker0">
+                                            <input type="text" name="beginDate" class="form-control pull-right" id="datepicker0">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
                                     <!-- /.form-group -->
                                     <div class="form-group">
                                         <label>Description</label>
-                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                        <%--<textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>--%>
+                                        <input type="text" name="description" class="form-control" rows="3" placeholder="Enter...">
                                     </div>
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>max number</label>
-                                        <input type="text" class="form-control" placeholder="max number">
+                                        <input type="text" name="maxNumber" class="form-control" placeholder="max number">
                                     </div>
                                     <!-- /.form-group -->
                                     <div class="form-group">
-                                        <label>Date:</label>
+                                        <label>end date:</label>
 
                                         <div class="input-group date">
                                             <div class="input-group-addon">
                                                 <i class="fa fa-calendar"></i>
                                             </div>
-                                            <input type="text" class="form-control pull-right" id="datepicker1">
+                                            <input type="text" name="endDate" class="form-control pull-right" id="datepicker1">
                                         </div>
                                         <!-- /.input group -->
                                     </div>
                                     <!-- /.form-group -->
                                     <div class="form-group">
                                         <label>price</label>
-                                        <input type="text" class="form-control" placeholder="price">
+                                        <input type="text" name="price" class="form-control" placeholder="price">
                                     </div>
                                 </div>
                                 <!-- /.col -->

@@ -1,5 +1,6 @@
 package base.controller;
 
+import base.helper.RawCourse;
 import base.model.Institution;
 import base.service.InstitutionService;
 import org.springframework.stereotype.Controller;
@@ -31,12 +32,42 @@ public class InstitutionController {
     }
 
     @RequestMapping("/Launch_Course")
-    public String launchingCourse(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-        System.out.println("/institution/Home");
+    public String launchCourse(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution//Launch_Course");
         String username = (String) session.getAttribute("username");
         Institution institution = institutionService.getInstitutionByUsername(username);
         model.addAttribute(institution);
         return "/institution/Launch_course";
+    }
+    @RequestMapping("/Launch")
+    public String launch(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution/Launch");
+        String username = (String) session.getAttribute("username");
+        Institution institution = institutionService.getInstitutionByUsername(username);
+        String courseName = request.getParameter("courseName");
+        String beginDate = request.getParameter("beginDate");
+        String description = request.getParameter("description");
+        String maxNumber = request.getParameter("maxNumber");
+        String endDate = request.getParameter("endDate");
+        String price = request.getParameter("price");
+
+//        System.out.println(courseName);
+//        System.out.println(beginDate);
+//        System.out.println(description);
+//        System.out.println(maxNumber);
+//        System.out.println(endDate);
+//        System.out.println(price);
+        RawCourse rawCourse = new RawCourse();
+        rawCourse.setBeginDate(beginDate);
+        rawCourse.setCourseName(courseName);
+        rawCourse.setEndDate(endDate);
+        rawCourse.setInstitutionid(institution.getId());
+        rawCourse.setInstitutionName(username);
+        rawCourse.setMaxNumber(Integer.parseInt(maxNumber));
+        rawCourse.setPrice(Integer.parseInt(price));
+        rawCourse.setDescription(description);
+
+        return "redirect:/institution/Launch_Course";
     }
 
     @RequestMapping("/Modify_Course")

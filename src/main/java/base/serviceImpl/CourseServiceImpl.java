@@ -1,6 +1,7 @@
 package base.serviceImpl;
 
 import base.helper.CourseState;
+import base.helper.RawCourse;
 import base.mapper.*;
 import base.model.*;
 import base.service.CourseService;
@@ -242,6 +243,12 @@ public class CourseServiceImpl implements CourseService {
         int result0 = droplogMapper.insert(droplog);
         int result1 = courseMapper.updateByPrimaryKeySelective(course);
         int result2 = traineeMapper.updateByPrimaryKey(trainee);
+
+        return false;
+    }
+
+    @Override
+    public boolean launchCourse(RawCourse rawCourse) throws Exception {
 
         return false;
     }

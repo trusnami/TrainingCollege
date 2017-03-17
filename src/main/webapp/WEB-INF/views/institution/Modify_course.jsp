@@ -209,7 +209,250 @@
         </section>
 
         <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">course 0</h3>
 
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>course id</th>
+                                    <th>course name</th>
+                                    <th>trainee number</th>
+                                    <th>max number</th>
+                                    <th>description</th>
+                                    <th>price</th>
+                                    <th>begin date</th>
+                                    <th>end date</th>
+                                    <th>operation</th>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>class1</td>
+                                    <td>2</td>
+                                    <td>50</td>
+                                    <td>it's a new class!</td>
+                                    <td>500</td>
+                                    <td>2017-04-12</td>
+                                    <td>2017-06-19</td>
+                                    <td>
+                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=1&amp;traineeid=2345671'">
+                                            modify
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>class2</td>
+                                    <td>1</td>
+                                    <td>50</td>
+                                    <td>it's a new class!</td>
+                                    <td>500</td>
+                                    <td>2017-03-30</td>
+                                    <td>2017-06-20</td>
+                                    <td>
+                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=2&amp;traineeid=2345671'">
+                                            modify
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>3</td>
+                                    <td>class3</td>
+                                    <td>1</td>
+                                    <td>50</td>
+                                    <td>it's a new class!</td>
+                                    <td>450</td>
+                                    <td>2017-03-28</td>
+                                    <td>2017-06-21</td>
+                                    <td>
+                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=3&amp;traineeid=2345671'">
+                                            unsubscribe
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> Recharge Log </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>time</th>
+                                                <th>amount</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            <tr>
+                                                <td>Thu Mar 16 14:06:33 CST 2017</td>
+                                                <td>126</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Thu Mar 16 14:09:48 CST 2017</td>
+                                                <td>2</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">course 1</h3>
+
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>course id</th>
+                                    <th>course name</th>
+                                    <th>trainee number</th>
+                                    <th>max number</th>
+                                    <th>description</th>
+                                    <th>price</th>
+                                    <th>operation</th>
+                                </tr>
+
+                                <tr>
+                                    <td>1</td>
+                                    <td>class1</td>
+                                    <td>2</td>
+                                    <td>50</td>
+                                    <td>it's a new class!</td>
+                                    <td>500</td>
+                                    <td>
+                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=1&amp;traineeid=2345671'">
+                                            modify
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>2</td>
+                                    <td>class2</td>
+                                    <td>1</td>
+                                    <td>50</td>
+                                    <td>it's a new class!</td>
+                                    <td>500</td>
+                                    <td>
+                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=2&amp;traineeid=2345671'">
+                                            modify
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>3</td>
+                                    <td>class3</td>
+                                    <td>1</td>
+                                    <td>50</td>
+                                    <td>it's a new class!</td>
+                                    <td>450</td>
+                                    <td>
+                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=3&amp;traineeid=2345671'">
+                                            unsubscribe
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <div class="col-md-4">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> Recharge Log </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>time</th>
+                                                <th>amount</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            <tr>
+                                                <td>Thu Mar 16 14:06:33 CST 2017</td>
+                                                <td>126</td>
+                                            </tr>
+
+                                            <tr>
+                                                <td>Thu Mar 16 14:09:48 CST 2017</td>
+                                                <td>2</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+            </div>
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
