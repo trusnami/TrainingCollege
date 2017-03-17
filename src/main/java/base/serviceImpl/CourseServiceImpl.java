@@ -9,6 +9,8 @@ import base.utils.MyTool;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -32,6 +34,8 @@ public class CourseServiceImpl implements CourseService {
     UnsubscribelogMapper unsubscribelogMapper;
     @Resource
     DroplogMapper droplogMapper;
+    @Resource
+    RawcourseMapper rawcourseMapper;
 
     @Override
     public ArrayList<Course> getUnsubscribedClass(int traineeid) throws Exception {
@@ -249,8 +253,33 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public boolean launchCourse(RawCourse rawCourse) throws Exception {
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        Date beginDate = dateFormat.parse(rawCourse.getBeginDate());
+        Date endDate = dateFormat.parse(rawCourse.getEndDate());
+
+        Rawcourse rawcourse = new Rawcourse();
+        rawcourse.setDescription(rawCourse.getDescription());
+        rawcourse.setBegindate(beginDate);
+        rawcourse.setCoursename(rawCourse.getCourseName());
+        rawcourse.setEnddate(endDate);
+        rawcourse.setInstitutionid(rawCourse.getInstitutionid());
+        rawcourse.setInstitutionname(rawCourse.getInstitutionName());
+        rawcourse.setMaxnumber(rawCourse.getMaxNumber());
+        rawcourse.setPrice(rawCourse.getPrice());
+
+        int result = rawcourseMapper.insertSelective(rawcourse);
 
         return false;
+    }
+
+    @Override
+    public List<Rawcourse> getRawCourseByInstitutionName(String institutionName) throws Exception {
+        RawcourseExample rawcourseExample = new RawcourseExample();
+        RawcourseExample.Criteria criteria = rawcourseExample.createCriteria();
+        criteria.andInstitutionnameEqualTo(institutionName);
+        criteria.andStateEqualTo(0);
+        List<Rawcourse> rawcourseList = rawcourseMapper.selectByExample(rawcourseExample);
+        return rawcourseList;
     }
 
 

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: yugi
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -321,24 +323,17 @@
                                     <th>begin date</th>
                                     <th>end date</th>
                                 </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>class1</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>500</td>
-                                    <td>2017-04-12</td>
-                                    <td>2017-06-19</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>class1</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>500</td>
-                                    <td>2017-04-12</td>
-                                    <td>2017-06-19</td>
-                                </tr>
+                                <c:forEach var="item" items="${list}">
+                                    <tr>
+                                        <td>${item.courseid}</td>
+                                        <td>${item.coursename}</td>
+                                        <td>${item.maxnumber}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.price}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>

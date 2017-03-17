@@ -2,6 +2,8 @@ package base.controller;
 
 import base.helper.RawCourse;
 import base.model.Institution;
+import base.model.Rawcourse;
+import base.service.CourseService;
 import base.service.InstitutionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by yugi on 2017/3/15.
@@ -21,6 +24,8 @@ public class InstitutionController {
 
     @Resource
     InstitutionService institutionService;
+    @Resource
+    CourseService courseService;
 
     @RequestMapping("/Home")
     public String toHome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
@@ -36,7 +41,9 @@ public class InstitutionController {
         System.out.println("/institution//Launch_Course");
         String username = (String) session.getAttribute("username");
         Institution institution = institutionService.getInstitutionByUsername(username);
+        List<Rawcourse> rawcourseList = courseService.getRawCourseByInstitutionName(username);
         model.addAttribute(institution);
+        model.addAttribute("list",rawcourseList);
         return "/institution/Launch_course";
     }
     @RequestMapping("/Launch")
@@ -52,7 +59,7 @@ public class InstitutionController {
         String price = request.getParameter("price");
 
 //        System.out.println(courseName);
-//        System.out.println(beginDate);
+        System.out.println(beginDate);
 //        System.out.println(description);
 //        System.out.println(maxNumber);
 //        System.out.println(endDate);
@@ -66,6 +73,8 @@ public class InstitutionController {
         rawCourse.setMaxNumber(Integer.parseInt(maxNumber));
         rawCourse.setPrice(Integer.parseInt(price));
         rawCourse.setDescription(description);
+
+        boolean result = courseService.launchCourse(rawCourse);
 
         return "redirect:/institution/Launch_Course";
     }

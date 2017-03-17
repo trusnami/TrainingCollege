@@ -21,6 +21,8 @@ public class Rawcourse {
 
     private Date enddate;
 
+    private Integer state;
+
     public Integer getCourseid() {
         return courseid;
     }
@@ -91,5 +93,13 @@ public class Rawcourse {
 
     public void setEnddate(Date enddate) {
         this.enddate = enddate;
+    }
+
+    public Integer getState() {
+        return state;
+    }
+
+    public void setState(Integer state) {
+        this.state = state;
     }
 }
