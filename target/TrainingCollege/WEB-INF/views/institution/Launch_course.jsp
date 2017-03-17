@@ -37,6 +37,14 @@
     <link rel="stylesheet" href="/css/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/css/bootstrap3-wysihtml5.min.css">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="/css/bootstrap-timepicker.min.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/css/datepicker3.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/css/select2.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -545,7 +553,8 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<!-- Select2 -->
+<script src="/js/select2.full.min.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="/js/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -553,6 +562,39 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
+
+
+
+    $(function () {
+        //Initialize Select2 Elements
+        //$(".select2").select2();
+
+        //Date picker
+        $('#datepicker0').datepicker({
+            autoclose: true
+        });
+
+        $('#datepicker1').datepicker({
+            autoclose: true
+        });
+//        //iCheck for checkbox and radio inputs
+//        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+//            checkboxClass: 'icheckbox_minimal-blue',
+//            radioClass: 'iradio_minimal-blue'
+//        });
+//        //Red color scheme for iCheck
+//        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+//            checkboxClass: 'icheckbox_minimal-red',
+//            radioClass: 'iradio_minimal-red'
+//        });
+//        //Flat red color scheme for iCheck
+//        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+//            checkboxClass: 'icheckbox_flat-green',
+//            radioClass: 'iradio_flat-green'
+//        });
+
+    });
+
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/js/bootstrap.min.js"></script>
@@ -583,6 +625,14 @@
 <script src="/js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/js/demo.js"></script>
+<!-- bootstrap datepicker -->
+<script src="/js/bootstrap-datepicker.js"></script>
+<!-- bootstrap time picker -->
+<script src="/js/bootstrap-timepicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="/css/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="/css/fastclick.js"></script>
 </body>
 </html>
 
