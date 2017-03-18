@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -240,54 +242,28 @@
                                     <th>end date</th>
                                     <th>operation</th>
                                 </tr>
+                                <c:forEach var="item" items="${prelist}">
+                                    <tr>
+                                        <td>${item.classid}</td>
+                                        <td>${item.classname}</td>
+                                        <td>${item.maxnumber}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.price}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-warning "
+                                                    onclick="location='http://localhost:8080/course/modifyCourse0?classid=${item.classid}&institutionid=${item.institutionid}'"
+                                            >modify</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-bitbucket "
+                                                    onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}'"
+                                            >show trainee</button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
 
-                                <tr>
-                                    <td>1</td>
-                                    <td>class1</td>
-                                    <td>2</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>500</td>
-                                    <td>2017-04-12</td>
-                                    <td>2017-06-19</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=1&amp;traineeid=2345671'">
-                                            modify
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>class2</td>
-                                    <td>1</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>500</td>
-                                    <td>2017-03-30</td>
-                                    <td>2017-06-20</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=2&amp;traineeid=2345671'">
-                                            modify
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>class3</td>
-                                    <td>1</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>450</td>
-                                    <td>2017-03-28</td>
-                                    <td>2017-06-21</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=3&amp;traineeid=2345671'">
-                                            unsubscribe
-                                        </button>
-                                    </td>
-                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -298,7 +274,7 @@
                 <div class="col-md-4">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title"> Recharge Log </h3>
+                            <h3 class="box-title"> trainee list </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">
@@ -313,17 +289,6 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-
-                                            <tr>
-                                                <td>Thu Mar 16 14:06:33 CST 2017</td>
-                                                <td>126</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Thu Mar 16 14:09:48 CST 2017</td>
-                                                <td>2</td>
-                                            </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
@@ -363,48 +328,25 @@
                                     <th>price</th>
                                     <th>operation</th>
                                 </tr>
-
-                                <tr>
-                                    <td>1</td>
-                                    <td>class1</td>
-                                    <td>2</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>500</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=1&amp;traineeid=2345671'">
-                                            modify
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>2</td>
-                                    <td>class2</td>
-                                    <td>1</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>500</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=2&amp;traineeid=2345671'">
-                                            modify
-                                        </button>
-                                    </td>
-                                </tr>
-
-                                <tr>
-                                    <td>3</td>
-                                    <td>class3</td>
-                                    <td>1</td>
-                                    <td>50</td>
-                                    <td>it's a new class!</td>
-                                    <td>450</td>
-                                    <td>
-                                        <button type="button" class="btn btn-block btn-warning " onclick="location='http://localhost:8080/course/unsubscribe?classid=3&amp;traineeid=2345671'">
-                                            unsubscribe
-                                        </button>
-                                    </td>
-                                </tr>
+                                <c:forEach var="item" items="${inlist}">
+                                    <tr>
+                                        <td>${item.classid}</td>
+                                        <td>${item.classname}</td>
+                                        <td>${item.maxnumber}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.price}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-warning "
+                                                    onclick="location='http://localhost:8080/course/modifyCourse1?classid=${item.classid}&institutionid=${item.institutionid}'"
+                                            >modify</button>
+                                        </td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-bitbucket "
+                                                    onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}'"
+                                            >show trainee</button>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
                                 </tbody>
                             </table>
                         </div>
@@ -415,7 +357,7 @@
                 <div class="col-md-4">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title"> Recharge Log </h3>
+                            <h3 class="box-title"> trainee list </h3>
                         </div>
                         <!-- /.box-header -->
                         <div class="box-body">

@@ -36,6 +36,8 @@ public class CourseServiceImpl implements CourseService {
     DroplogMapper droplogMapper;
     @Resource
     RawcourseMapper rawcourseMapper;
+    @Resource
+    ApproveoldMapper approveoldMapper;
 
     @Override
     public ArrayList<Course> getUnsubscribedClass(int traineeid) throws Exception {
@@ -280,6 +282,36 @@ public class CourseServiceImpl implements CourseService {
         criteria.andStateEqualTo(0);
         List<Rawcourse> rawcourseList = rawcourseMapper.selectByExample(rawcourseExample);
         return rawcourseList;
+    }
+
+    @Override
+    public List<Course> getCourseByInstitutionName(String institutionName) throws Exception {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andInstitutionnameEqualTo(institutionName);
+        List<Course> courseList = courseMapper.selectByExample(courseExample);
+        return courseList;
+    }
+
+    @Override
+    public boolean applyModifyCourse(String courseid,String courseName, String beginDate,
+                                     String description, String maxNumber, String endDate,
+                                     String price) throws Exception {
+        Approveold approveold = new Approveold();
+        approveold.setClassid(Integer.parseInt(courseid));
+        approveold.setClassname(courseName);
+
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+
+        approveold.setBegindate(dateFormat.parse(beginDate));
+        approveold.setEnddate(dateFormat.parse(endDate));
+        approveold.setDescription(description);
+        approveold.setMaxnumber(Integer.parseInt(maxNumber));
+        approveold.setPrice(Integer.parseInt(price));
+
+        int result = approveoldMapper.insertSelective(approveold);
+
+        return false;
     }
 
 

@@ -31,4 +31,8 @@ public interface CourseService {
 
     List<Rawcourse> getRawCourseByInstitutionName (String institutionName) throws Exception;
 
+    List<Course> getCourseByInstitutionName (String institutionName) throws Exception;
+
+    boolean applyModifyCourse (String courseid,String courseName,String beginDate,String description,String maxNumber,String endDate,String price) throws Exception;
+
 }

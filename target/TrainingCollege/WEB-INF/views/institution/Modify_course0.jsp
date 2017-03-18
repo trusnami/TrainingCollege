@@ -1,12 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: yugi
-  Date: 2017/3/16
-  Time: 22:14
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
@@ -39,6 +32,14 @@
     <link rel="stylesheet" href="/css/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/css/bootstrap3-wysihtml5.min.css">
+    <!-- Bootstrap time Picker -->
+    <link rel="stylesheet" href="/css/bootstrap-timepicker.min.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="/css/datepicker3.css">
+    <!-- iCheck for checkboxes and radio inputs -->
+    <link rel="stylesheet" href="/css/all.css">
+    <!-- Select2 -->
+    <link rel="stylesheet" href="/css/select2.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -204,8 +205,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Course
-                <small> modify course</small>
+                Coruse
+                <small> modify course </small>
             </h1>
 
         </section>
@@ -213,185 +214,78 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">course 0</h3>
+                <div class="box box-default">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">course info</h3>
 
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <form action="/course/applyUpdateCourse" method="POST">
+                        <div class="box-body" style="display: block;">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Course name</label>
+                                        <input type="text" name="courseName" class="form-control" value="${course.classname}">
+                                        <input type="text" name="courseid" value="${course.classid}" style="display:none">
+                                    </div>
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>begin date:</label>
+
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name="beginDate" class="form-control pull-right" value="<fmt:formatDate value="${course.begindate}" pattern="MM/dd/yyyy"/>" id="datepicker0">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <%--<textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>--%>
+                                        <input type="text" name="description" class="form-control" rows="3" value="${course.description}">
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tbody>
-                                <tr>
-                                    <th>course id</th>
-                                    <th>course name</th>
-                                    <th>trainee number</th>
-                                    <th>max number</th>
-                                    <th>description</th>
-                                    <th>price</th>
-                                    <th>begin date</th>
-                                    <th>end date</th>
-                                    <th>operation</th>
-                                </tr>
-                                <c:forEach var="item" items="${prelist}">
-                                    <tr>
-                                        <td>${item.classid}</td>
-                                        <td>${item.classname}</td>
-                                        <td>${item.maxnumber}</td>
-                                        <td>${item.description}</td>
-                                        <td>${item.price}</td>
-                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
-                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
-                                        <td>
-                                            <button type="button" class="btn btn-block btn-warning "
-                                                    onclick="location='http://localhost:8080/course/modifyCourse0?classid=${item.classid}&institutionid=${item.institutionid}'"
-                                            >modify</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-block btn-bitbucket "
-                                                    onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}'"
-                                            >show trainee</button>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>max number</label>
+                                        <input type="text" name="maxNumber" class="form-control" value="${course.maxnumber}">
+                                    </div>
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>end date:</label>
 
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <div class="col-md-4">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title"> trainee list </h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="dataTables_wrapper form-inline dt-bootstrap">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                            <thead>
-                                            <tr role="row">
-                                                <th>time</th>
-                                                <th>amount</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
+                                        <div class="input-group date">
+                                            <div class="input-group-addon">
+                                                <i class="fa fa-calendar"></i>
+                                            </div>
+                                            <input type="text" name="endDate" class="form-control pull-right" value="<fmt:formatDate value="${course.enddate}" pattern="MM/dd/yyyy"/>" id="datepicker1">
+                                        </div>
+                                        <!-- /.input group -->
+                                    </div>
+                                    <!-- /.form-group -->
+                                    <div class="form-group">
+                                        <label>price</label>
+                                        <input type="text" name="price" class="form-control" value="${course.price}">
                                     </div>
                                 </div>
+                                <!-- /.col -->
                             </div>
+                            <!-- /.row -->
                         </div>
                         <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title">course 1</h3>
-
-                            <div class="box-tools">
-                                <div class="input-group input-group-sm" style="width: 150px;">
-                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-                                    <div class="input-group-btn">
-                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="box-footer" style="display: block;">
+                            <button type="submit" class="btn btn-primary">
+                                submit
+                            </button>
                         </div>
-                        <!-- /.box-header -->
-                        <div class="box-body table-responsive no-padding">
-                            <table class="table table-hover">
-                                <tbody>
-                                <tr>
-                                    <th>course id</th>
-                                    <th>course name</th>
-                                    <th>trainee number</th>
-                                    <th>max number</th>
-                                    <th>description</th>
-                                    <th>price</th>
-                                    <th>operation</th>
-                                </tr>
-                                <c:forEach var="item" items="${inlist}">
-                                    <tr>
-                                        <td>${item.classid}</td>
-                                        <td>${item.classname}</td>
-                                        <td>${item.maxnumber}</td>
-                                        <td>${item.description}</td>
-                                        <td>${item.price}</td>
-                                        <td>
-                                            <button type="button" class="btn btn-block btn-warning "
-                                                    onclick="location='http://localhost:8080/course/modifyCourse1?classid=${item.classid}&institutionid=${item.institutionid}'"
-                                            >modify</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-block btn-bitbucket "
-                                                    onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}'"
-                                            >show trainee</button>
-                                        </td>
-                                    </tr>
-                                </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
-                <div class="col-md-4">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title"> trainee list </h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="dataTables_wrapper form-inline dt-bootstrap">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                            <thead>
-                                            <tr role="row">
-                                                <th>time</th>
-                                                <th>amount</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-
-                                            <tr>
-                                                <td>Thu Mar 16 14:06:33 CST 2017</td>
-                                                <td>126</td>
-                                            </tr>
-
-                                            <tr>
-                                                <td>Thu Mar 16 14:09:48 CST 2017</td>
-                                                <td>2</td>
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
+                    </form>
                 </div>
             </div>
         </section>
@@ -601,7 +495,8 @@
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
+<!-- Select2 -->
+<script src="/js/select2.full.min.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="/js/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -609,6 +504,39 @@
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
+
+
+
+    $(function () {
+        //Initialize Select2 Elements
+        //$(".select2").select2();
+
+        //Date picker
+        $('#datepicker0').datepicker({
+            autoclose: true
+        });
+
+        $('#datepicker1').datepicker({
+            autoclose: true
+        });
+//        //iCheck for checkbox and radio inputs
+//        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+//            checkboxClass: 'icheckbox_minimal-blue',
+//            radioClass: 'iradio_minimal-blue'
+//        });
+//        //Red color scheme for iCheck
+//        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
+//            checkboxClass: 'icheckbox_minimal-red',
+//            radioClass: 'iradio_minimal-red'
+//        });
+//        //Flat red color scheme for iCheck
+//        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
+//            checkboxClass: 'icheckbox_flat-green',
+//            radioClass: 'iradio_flat-green'
+//        });
+
+    });
+
 </script>
 <!-- Bootstrap 3.3.6 -->
 <script src="/js/bootstrap.min.js"></script>
@@ -639,5 +567,16 @@
 <script src="/js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/js/demo.js"></script>
+<!-- bootstrap datepicker -->
+<script src="/js/bootstrap-datepicker.js"></script>
+<!-- bootstrap time picker -->
+<script src="/js/bootstrap-timepicker.min.js"></script>
+<!-- iCheck 1.0.1 -->
+<script src="/css/icheck.min.js"></script>
+<!-- FastClick -->
+<script src="/css/fastclick.js"></script>
 </body>
 </html>
+
+
+

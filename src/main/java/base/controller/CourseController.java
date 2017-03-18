@@ -1,5 +1,6 @@
 package base.controller;
 
+import base.model.Course;
 import base.service.CourseService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,4 +56,50 @@ public class CourseController {
 
         return "redirect:/trainee/C_Unsubscribe";
     }
+
+    @RequestMapping("/modifyCourse0")
+    public String modifyCourse0(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/modifyCourse0\n");
+        String courseid = request.getParameter("classid");
+        Course course = courseService.getCourseByid(Integer.parseInt(courseid));
+        model.addAttribute(course);
+
+        return "/institution/Modify_course0";
+    }
+
+    @RequestMapping("/modifyCourse1")
+    public String modifyCourse1(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/modifyCourse1\n");
+
+
+
+        return "redirect:/trainee/C_Unsubscribe";
+    }
+
+    @RequestMapping("/getTraineeByCourseid")
+    public String getTraineeByCourseid(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/getTraineeByCourseid\n");
+
+
+        return "redirect:/trainee/C_Unsubscribe";
+    }
+
+    @RequestMapping("/applyUpdateCourse")
+    public String applyUpdateCourse(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/applyUpdateCourse\n");
+        String courseid = request.getParameter("courseid");
+        String courseName = request.getParameter("courseName");
+        String beginDate = request.getParameter("beginDate");
+        String description = request.getParameter("description");
+        String maxNumber = request.getParameter("maxNumber");
+        String endDate = request.getParameter("endDate");
+        String price = request.getParameter("price");
+        System.out.print("courseid:"+courseid+"\n");
+
+        boolean result = courseService.applyModifyCourse(courseid,courseName,beginDate,description,
+                maxNumber,endDate,price);
+
+        return "redirect:/institution/Modify_Course";
+    }
+
 }
