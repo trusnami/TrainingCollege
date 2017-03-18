@@ -71,9 +71,11 @@ public class CourseController {
     public String modifyCourse1(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
         System.out.print("/course/modifyCourse1\n");
 
+        String courseid = request.getParameter("classid");
+        Course course = courseService.getCourseByid(Integer.parseInt(courseid));
+        model.addAttribute(course);
 
-
-        return "redirect:/trainee/C_Unsubscribe";
+        return "/institution/Modify_course1";
     }
 
     @RequestMapping("/getTraineeByCourseid")
