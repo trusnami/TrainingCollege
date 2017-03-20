@@ -63,6 +63,7 @@
         <table tableName="droplog"></table>
         <table tableName="rawcourse"></table>
         <table tableName="approveold"></table>
+        <table tableName="score"></table>
         <!-- 有些表的字段需要指定java类型
          <table schema="" tableName="">
             <columnOverride column="" javaType="" />

@@ -7,6 +7,8 @@ public class Institution {
 
     private String password;
 
+    private Integer balance;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class Institution {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
+    }
+
+    public Integer getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Integer balance) {
+        this.balance = balance;
     }
 }

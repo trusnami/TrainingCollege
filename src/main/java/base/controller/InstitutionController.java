@@ -135,10 +135,29 @@ public class InstitutionController {
 
     @RequestMapping("/Score_Registrate")
     public String scoreRegistrate(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-        System.out.println("/institution/Home");
+        System.out.println("/institution/Score_Registrate");
         String username = (String) session.getAttribute("username");
         Institution institution = institutionService.getInstitutionByUsername(username);
+        List<Course> courseList = courseService.getFinishedCourse(institution.getId());
+        List<Course> courseList1 = new ArrayList<>();
+        List<Course> courseList2 = new ArrayList<>();
+        ListIterator listIterator = courseList.listIterator();
+        while (listIterator.hasNext()){
+            Course course = (Course) listIterator.next();
+            if (course.getScorestate()==0){
+                courseList1.add(course);
+            }else {
+                courseList2.add(course);
+            }
+        }
+
+        System.out.println("list:"+courseList.size());
+        System.out.println("list1:"+courseList1.size());
+        System.out.println("list2:"+courseList2.size());
+
         model.addAttribute(institution);
+        model.addAttribute("list1",courseList1);
+        model.addAttribute("list2",courseList2);
         return "/institution//Score_registrate";
     }
 

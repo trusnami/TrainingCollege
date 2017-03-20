@@ -761,6 +761,66 @@ public class CourseExample {
             addCriterionForJDBCDate("enddate not between", value1, value2, "enddate");
             return (Criteria) this;
         }
+
+        public Criteria andScorestateIsNull() {
+            addCriterion("scorestate is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateIsNotNull() {
+            addCriterion("scorestate is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateEqualTo(Integer value) {
+            addCriterion("scorestate =", value, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateNotEqualTo(Integer value) {
+            addCriterion("scorestate <>", value, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateGreaterThan(Integer value) {
+            addCriterion("scorestate >", value, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateGreaterThanOrEqualTo(Integer value) {
+            addCriterion("scorestate >=", value, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateLessThan(Integer value) {
+            addCriterion("scorestate <", value, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateLessThanOrEqualTo(Integer value) {
+            addCriterion("scorestate <=", value, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateIn(List<Integer> values) {
+            addCriterion("scorestate in", values, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateNotIn(List<Integer> values) {
+            addCriterion("scorestate not in", values, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateBetween(Integer value1, Integer value2) {
+            addCriterion("scorestate between", value1, value2, "scorestate");
+            return (Criteria) this;
+        }
+
+        public Criteria andScorestateNotBetween(Integer value1, Integer value2) {
+            addCriterion("scorestate not between", value1, value2, "scorestate");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

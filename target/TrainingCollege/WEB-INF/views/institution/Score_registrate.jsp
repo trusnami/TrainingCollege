@@ -5,7 +5,10 @@
   Time: 22:29
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -176,7 +179,7 @@
                     <ul class="treeview-menu">
                         <%--<li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>--%>
 
-                        <li><a href="/institution/Score_Registrate"><i class="fa fa-circle-o"></i> score registrate </a></li>
+                        <li><a href="/institution/Score_Registrate"><i class="fa fa-circle-o"></i> score register </a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -210,7 +213,184 @@
 
         <!-- Main content -->
         <section class="content">
-            
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">course 0</h3>
+
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>course id</th>
+                                    <th>course name</th>
+                                    <th>trainee number</th>
+                                    <th>max number</th>
+                                    <th>description</th>
+                                    <th>price</th>
+                                    <th>begin date</th>
+                                    <th>end date</th>
+                                    <th>operation</th>
+                                </tr>
+                                <c:forEach var="item" items="${list1}">
+                                    <tr>
+                                        <td>${item.classid}</td>
+                                        <td>${item.classname}</td>
+                                        <td>${item.traineenumber}</td>
+                                        <td>${item.maxnumber}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.price}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-bitbucket "
+                                                    onclick="location='http://localhost:8080/score/register?classid=${item.classid}&institutionid=${item.institutionid}'"
+                                            >score register</button>
+                                        </td>
+                                            <%--<td>--%>
+                                            <%--<button type="button" class="btn btn-block btn-bitbucket "--%>
+                                            <%--onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}&institutionid=${item.institutionid}'"--%>
+                                            <%-->show trainee</button>--%>
+                                            <%--</td>--%>
+                                    </tr>
+                                </c:forEach>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <%--<div class="col-md-4">--%>
+                <%--<div class="box">--%>
+                <%--<div class="box-header">--%>
+                <%--<h3 class="box-title"> trainee list </h3>--%>
+                <%--</div>--%>
+                <%--<!-- /.box-header -->--%>
+                <%--<div class="box-body">--%>
+                <%--<div class="dataTables_wrapper form-inline dt-bootstrap">--%>
+                <%--<div class="row">--%>
+                <%--<div class="col-sm-12">--%>
+                <%--<table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">--%>
+                <%--<thead>--%>
+                <%--<tr role="row">--%>
+                <%--<th>time</th>--%>
+                <%--<th>amount</th>--%>
+                <%--</tr>--%>
+                <%--</thead>--%>
+                <%--<tbody>--%>
+                <%--</tbody>--%>
+                <%--</table>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--<!-- /.box-body -->--%>
+                <%--</div>--%>
+                <%--<!-- /.box -->--%>
+                <%--</div>--%>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">course 1</h3>
+
+                            <div class="box-tools">
+                                <div class="input-group input-group-sm" style="width: 150px;">
+                                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+                                    <div class="input-group-btn">
+                                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body table-responsive no-padding">
+                            <table class="table table-hover">
+                                <tbody>
+                                <tr>
+                                    <th>course id</th>
+                                    <th>course name</th>
+                                    <th>trainee number</th>
+                                    <th>max number</th>
+                                    <th>description</th>
+                                    <th>price</th>
+                                    <th>begin date</th>
+                                    <th>end date</th>
+                                    <th>operation</th>
+                                </tr>
+                                <c:forEach var="item" items="${list2}">
+                                    <tr>
+                                        <td>${item.classid}</td>
+                                        <td>${item.classname}</td>
+                                        <td>${item.traineenumber}</td>
+                                        <td>${item.maxnumber}</td>
+                                        <td>${item.description}</td>
+                                        <td>${item.price}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
+                                        <td>
+                                            <button type="button" class="btn btn-block btn-bitbucket "
+                                                    onclick="location='http://localhost:8080/score/check?classid=${item.classid}&institutionid=${item.institutionid}'"
+                                            >score check</button>
+                                        </td>
+                                            <%--<td>--%>
+                                            <%--<button type="button" class="btn btn-block btn-bitbucket "--%>
+                                            <%--onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}&institutionid=${item.institutionid}'"--%>
+                                            <%-->show trainee</button>--%>
+                                            <%--</td>--%>
+                                    </tr>
+                                </c:forEach>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <%--<div class="col-md-4">--%>
+                <%--<div class="box">--%>
+                <%--<div class="box-header">--%>
+                <%--<h3 class="box-title"> trainee list </h3>--%>
+                <%--</div>--%>
+                <%--<!-- /.box-header -->--%>
+                <%--<div class="box-body">--%>
+                <%--<div class="dataTables_wrapper form-inline dt-bootstrap">--%>
+                <%--<div class="row">--%>
+                <%--<div class="col-sm-12">--%>
+                <%--<table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">--%>
+                <%--<thead>--%>
+                <%--<tr role="row">--%>
+                <%--<th>time</th>--%>
+                <%--<th>amount</th>--%>
+                <%--</tr>--%>
+                <%--</thead>--%>
+                <%--<tbody>--%>
+                <%--</tbody>--%>
+                <%--</table>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--</div>--%>
+                <%--<!-- /.box-body -->--%>
+                <%--</div>--%>
+                <%--<!-- /.box -->--%>
+                <%--</div>--%>
+            </div>
         </section>
         <!-- /.content -->
     </div>

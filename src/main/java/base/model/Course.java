@@ -23,6 +23,8 @@ public class Course {
 
     private Date enddate;
 
+    private Integer scorestate;
+
     public Integer getClassid() {
         return classid;
     }
@@ -101,5 +103,13 @@ public class Course {
 
     public void setEnddate(Date enddate) {
         this.enddate = enddate;
+    }
+
+    public Integer getScorestate() {
+        return scorestate;
+    }
+
+    public void setScorestate(Integer scorestate) {
+        this.scorestate = scorestate;
     }
 }

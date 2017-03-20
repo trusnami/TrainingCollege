@@ -323,5 +323,31 @@ public class CourseServiceImpl implements CourseService {
         return traineeList;
     }
 
+    @Override
+    public List<Course> getFinishedCourse(int institutionid) throws Exception {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andInstitutionidEqualTo(institutionid);
+        List<Course> courseList = courseMapper.selectByExample(courseExample);
+        List<Course> resultList = new ArrayList<>();
+        ListIterator listIterator = courseList.listIterator();
+        while (listIterator.hasNext()){
+            Course course = (Course) listIterator.next();
+            if (MyTool.courseStateCheck(course.getBegindate(), course.getEnddate())==CourseState.POST){
+                resultList.add(course);
+            }
+        }
+        return resultList;
+    }
+
+    @Override
+    public boolean setCourseScoreFinished(int courseid) throws Exception {
+        Course course = new Course();
+        course.setClassid(courseid);
+        course.setScorestate(1);
+        int result = courseMapper.updateByPrimaryKeySelective(course);
+        return false;
+    }
+
 
 }
