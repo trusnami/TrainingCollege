@@ -33,7 +33,6 @@ public class LogServiceImpl implements LogService{
         DroplogExample.Criteria criteria1 = droplogExample.createCriteria();
         criteria1.andTraineeidEqualTo(traineeid);
         List<Droplog> droplogList = droplogMapper.selectByExample(droplogExample);
-
         return droplogList;
     }
 
@@ -71,5 +70,32 @@ public class LogServiceImpl implements LogService{
         criteria1.andTraineeidEqualTo(traineeid);
         List<Unsubscribelog> unsubscribelogList = unsubscribelogMapper.selectByExample(unsubscribelogExample);
         return unsubscribelogList;
+    }
+
+    @Override
+    public List<Subscribelog> getSubscribelogByCourse(int courseid) throws Exception {
+        SubscribelogExample subscribelogExample = new SubscribelogExample();
+        SubscribelogExample.Criteria criteria1 = subscribelogExample.createCriteria();
+        criteria1.andCourseidEqualTo(courseid);
+        List<Subscribelog> subscribelogList = subscribelogMapper.selectByExample(subscribelogExample);
+        return subscribelogList;
+    }
+
+    @Override
+    public List<Unsubscribelog> getUnsubscribelogByCourse(int courseid) throws Exception {
+        UnsubscribelogExample unsubscribelogExample = new UnsubscribelogExample();
+        UnsubscribelogExample.Criteria criteria1 = unsubscribelogExample.createCriteria();
+        criteria1.andCourseidEqualTo(courseid);
+        List<Unsubscribelog> unsubscribelogList = unsubscribelogMapper.selectByExample(unsubscribelogExample);
+        return unsubscribelogList;
+    }
+
+    @Override
+    public List<Droplog> getDroplogByCourse(int courseid) throws Exception {
+        DroplogExample droplogExample = new DroplogExample();
+        DroplogExample.Criteria criteria1 = droplogExample.createCriteria();
+        criteria1.andCourseidEqualTo(courseid);
+        List<Droplog> droplogList = droplogMapper.selectByExample(droplogExample);
+        return droplogList;
     }
 }

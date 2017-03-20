@@ -27,4 +27,11 @@ public class InstitutionServiceImpl implements InstitutionService {
 
         return institutionList.get(0);
     }
+
+    @Override
+    public Institution getInstitutionByid(String id) throws Exception {
+        Institution institution = institutionMapper.selectByPrimaryKey(Integer.parseInt(id));
+
+        return institution;
+    }
 }

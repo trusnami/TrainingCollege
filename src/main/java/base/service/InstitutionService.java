@@ -9,4 +9,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface InstitutionService {
     Institution getInstitutionByUsername(String username) throws Exception;
+    Institution getInstitutionByid(String id) throws Exception;
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: yugi
@@ -6,6 +7,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,7 +177,7 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>
+                        <%--<li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>--%>
 
                         <li><a href="/institution/Score_Registrate"><i class="fa fa-circle-o"></i> score registrate </a></li>
                     </ul>
@@ -203,14 +206,132 @@
         <section class="content-header">
             <h1>
                 Trainee
-                <small> subscribe log </small>
+                <small> course log </small>
             </h1>
 
         </section>
 
         <!-- Main content -->
         <section class="content">
-
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> trianee list </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>trainee id</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="item" items="${list1}">
+                                                    <tr>
+                                                        <td>${item.traineeid}</td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-5">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> course Log </h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>trainee id</th>
+                                                <th>time</th>
+                                                <th>income</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                <c:forEach var="item" items="${list2}">
+                                                    <tr>
+                                                        <td>${item.traineeid}</td>
+                                                        <td>${item.time}</td>
+                                                        <td>${item.deduction}</td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-md-5">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title"> unsubcribe/drop Log</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body">
+                            <div class="dataTables_wrapper form-inline dt-bootstrap">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                            <thead>
+                                            <tr role="row">
+                                                <th>trainee id</th>
+                                                <th>time</th>
+                                                <th>refund</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <c:forEach var="item" items="${list3}">
+                                                <tr role="row",class="odd">
+                                                    <td>${item.traineeid}</td>
+                                                    <td>${item.time}</td>
+                                                    <td>${item.refund}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            <c:forEach var="item" items="${list4}">
+                                                <tr role="row",class="even">
+                                                    <td>${item.traineeid}</td>
+                                                    <td>${item.time}</td>
+                                                    <td>${item.refund}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
 
         </section>
         <!-- /.content -->

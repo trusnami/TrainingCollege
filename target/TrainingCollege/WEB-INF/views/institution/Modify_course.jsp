@@ -176,7 +176,7 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>
+                        <%--<li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>--%>
 
                         <li><a href="/institution/Score_Registrate"><i class="fa fa-circle-o"></i> score registrate </a></li>
                     </ul>
@@ -213,7 +213,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">course 0</h3>
@@ -246,6 +246,7 @@
                                     <tr>
                                         <td>${item.classid}</td>
                                         <td>${item.classname}</td>
+                                        <td>${item.traineenumber}</td>
                                         <td>${item.maxnumber}</td>
                                         <td>${item.description}</td>
                                         <td>${item.price}</td>
@@ -255,12 +256,15 @@
                                             <button type="button" class="btn btn-block btn-warning "
                                                     onclick="location='http://localhost:8080/course/modifyCourse0?classid=${item.classid}&institutionid=${item.institutionid}'"
                                             >modify</button>
-                                        </td>
-                                        <td>
                                             <button type="button" class="btn btn-block btn-bitbucket "
-                                                    onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}'"
-                                            >show trainee</button>
+                                                    onclick="location='http://localhost:8080/institution/Subscribe_Log?classid=${item.classid}&institutionid=${item.institutionid}'"
+                                            >course log</button>
                                         </td>
+                                        <%--<td>--%>
+                                            <%--<button type="button" class="btn btn-block btn-bitbucket "--%>
+                                                    <%--onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}&institutionid=${item.institutionid}'"--%>
+                                            <%-->show trainee</button>--%>
+                                        <%--</td>--%>
                                     </tr>
                                 </c:forEach>
 
@@ -271,37 +275,37 @@
                     </div>
                     <!-- /.box -->
                 </div>
-                <div class="col-md-4">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title"> trainee list </h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="dataTables_wrapper form-inline dt-bootstrap">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                            <thead>
-                                            <tr role="row">
-                                                <th>time</th>
-                                                <th>amount</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                <%--<div class="col-md-4">--%>
+                    <%--<div class="box">--%>
+                        <%--<div class="box-header">--%>
+                            <%--<h3 class="box-title"> trainee list </h3>--%>
+                        <%--</div>--%>
+                        <%--<!-- /.box-header -->--%>
+                        <%--<div class="box-body">--%>
+                            <%--<div class="dataTables_wrapper form-inline dt-bootstrap">--%>
+                                <%--<div class="row">--%>
+                                    <%--<div class="col-sm-12">--%>
+                                        <%--<table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">--%>
+                                            <%--<thead>--%>
+                                            <%--<tr role="row">--%>
+                                                <%--<th>time</th>--%>
+                                                <%--<th>amount</th>--%>
+                                            <%--</tr>--%>
+                                            <%--</thead>--%>
+                                            <%--<tbody>--%>
+                                            <%--</tbody>--%>
+                                        <%--</table>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<!-- /.box-body -->--%>
+                    <%--</div>--%>
+                    <%--<!-- /.box -->--%>
+                <%--</div>--%>
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
                             <h3 class="box-title">course 1</h3>
@@ -326,25 +330,33 @@
                                     <th>max number</th>
                                     <th>description</th>
                                     <th>price</th>
+                                    <th>begin date</th>
+                                    <th>end date</th>
                                     <th>operation</th>
                                 </tr>
                                 <c:forEach var="item" items="${inlist}">
                                     <tr>
                                         <td>${item.classid}</td>
                                         <td>${item.classname}</td>
+                                        <td>${item.traineenumber}</td>
                                         <td>${item.maxnumber}</td>
                                         <td>${item.description}</td>
                                         <td>${item.price}</td>
+                                        <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                        <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
                                         <td>
                                             <button type="button" class="btn btn-block btn-warning "
                                                     onclick="location='http://localhost:8080/course/modifyCourse1?classid=${item.classid}&institutionid=${item.institutionid}'"
                                             >modify</button>
-                                        </td>
-                                        <td>
                                             <button type="button" class="btn btn-block btn-bitbucket "
-                                                    onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}'"
-                                            >show trainee</button>
+                                                    onclick="location='http://localhost:8080/institution/Subscribe_Log?classid=${item.classid}&institutionid=${item.institutionid}'"
+                                            >course log</button>
                                         </td>
+                                        <%--<td>--%>
+                                            <%--<button type="button" class="btn btn-block btn-bitbucket "--%>
+                                                    <%--onclick="location='http://localhost:8080/course/getTraineeByCourseid?classid=${item.classid}&institutionid=${item.institutionid}'"--%>
+                                            <%-->show trainee</button>--%>
+                                        <%--</td>--%>
                                     </tr>
                                 </c:forEach>
                                 </tbody>
@@ -354,45 +366,36 @@
                     </div>
                     <!-- /.box -->
                 </div>
-                <div class="col-md-4">
-                    <div class="box">
-                        <div class="box-header">
-                            <h3 class="box-title"> trainee list </h3>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                            <div class="dataTables_wrapper form-inline dt-bootstrap">
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
-                                            <thead>
-                                            <tr role="row">
-                                                <th>time</th>
-                                                <th>amount</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
+                <%--<div class="col-md-4">--%>
+                    <%--<div class="box">--%>
+                        <%--<div class="box-header">--%>
+                            <%--<h3 class="box-title"> trainee list </h3>--%>
+                        <%--</div>--%>
+                        <%--<!-- /.box-header -->--%>
+                        <%--<div class="box-body">--%>
+                            <%--<div class="dataTables_wrapper form-inline dt-bootstrap">--%>
+                                <%--<div class="row">--%>
+                                    <%--<div class="col-sm-12">--%>
+                                        <%--<table class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">--%>
+                                            <%--<thead>--%>
+                                            <%--<tr role="row">--%>
+                                                <%--<th>time</th>--%>
+                                                <%--<th>amount</th>--%>
+                                            <%--</tr>--%>
+                                            <%--</thead>--%>
+                                            <%--<tbody>--%>
 
-                                            <tr>
-                                                <td>Thu Mar 16 14:06:33 CST 2017</td>
-                                                <td>126</td>
-                                            </tr>
 
-                                            <tr>
-                                                <td>Thu Mar 16 14:09:48 CST 2017</td>
-                                                <td>2</td>
-                                            </tr>
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                    <!-- /.box -->
-                </div>
+                                            <%--</tbody>--%>
+                                        <%--</table>--%>
+                                    <%--</div>--%>
+                                <%--</div>--%>
+                            <%--</div>--%>
+                        <%--</div>--%>
+                        <%--<!-- /.box-body -->--%>
+                    <%--</div>--%>
+                    <%--<!-- /.box -->--%>
+                <%--</div>--%>
             </div>
         </section>
         <!-- /.content -->

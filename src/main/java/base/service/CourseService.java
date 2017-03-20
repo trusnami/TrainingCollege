@@ -35,4 +35,5 @@ public interface CourseService {
 
     boolean applyModifyCourse (String courseid,String courseName,String beginDate,String description,String maxNumber,String endDate,String price) throws Exception;
 
+    List<TcourseKey> getTraineeByCourseid(int courseid) throws Exception;
 }

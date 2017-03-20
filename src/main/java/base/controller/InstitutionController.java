@@ -2,11 +2,10 @@ package base.controller;
 
 import base.helper.CourseState;
 import base.helper.RawCourse;
-import base.model.Course;
-import base.model.Institution;
-import base.model.Rawcourse;
+import base.model.*;
 import base.service.CourseService;
 import base.service.InstitutionService;
+import base.service.LogService;
 import base.utils.MyTool;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +30,8 @@ public class InstitutionController {
     InstitutionService institutionService;
     @Resource
     CourseService courseService;
+    @Resource
+    LogService logService;
 
     @RequestMapping("/Home")
     public String toHome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
@@ -114,10 +115,21 @@ public class InstitutionController {
 
     @RequestMapping("/Subscribe_Log")
     public String subscribeLog(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-        System.out.println("/institution/Home");
+        System.out.println("/institution/Subscribe_Log");
         String username = (String) session.getAttribute("username");
         Institution institution = institutionService.getInstitutionByUsername(username);
+        int courseid = Integer.parseInt(request.getParameter("classid"));
+        String institutionid = request.getParameter("institutionid");
+        List<TcourseKey> tcourseKeyList = courseService.getTraineeByCourseid(courseid);
+        List<Subscribelog> subscribelogList = logService.getSubscribelogByCourse(courseid);
+        List<Unsubscribelog> unsubscribelogList = logService.getUnsubscribelogByCourse(courseid);
+        List<Droplog> droplogList = logService.getDroplogByCourse(courseid);
+
         model.addAttribute(institution);
+        model.addAttribute("list1",tcourseKeyList);
+        model.addAttribute("list2",subscribelogList);
+        model.addAttribute("list3",unsubscribelogList);
+        model.addAttribute("list4",droplogList);
         return "/institution/Subscribe_log";
     }
 

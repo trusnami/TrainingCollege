@@ -314,5 +314,14 @@ public class CourseServiceImpl implements CourseService {
         return false;
     }
 
+    @Override
+    public List<TcourseKey> getTraineeByCourseid(int courseid) throws Exception {
+        TcourseExample tcourseExample = new TcourseExample();
+        TcourseExample.Criteria criteria = tcourseExample.createCriteria();
+        criteria.andClassidEqualTo(courseid);
+        List<TcourseKey> traineeList = tcourseMapper.selectByExample(tcourseExample);
+        return traineeList;
+    }
+
 
 }

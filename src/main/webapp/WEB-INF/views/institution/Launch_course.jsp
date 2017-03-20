@@ -184,7 +184,7 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>
+                        <%--<li><a href="/institution/Subscribe_Log"><i class="fa fa-circle-o"></i> Subscribe log </a></li>--%>
 
                         <li><a href="/institution/Score_Registrate"><i class="fa fa-circle-o"></i> score registrate </a></li>
                     </ul>

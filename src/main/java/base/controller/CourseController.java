@@ -1,7 +1,9 @@
 package base.controller;
 
 import base.model.Course;
+import base.model.Institution;
 import base.service.CourseService;
+import base.service.InstitutionService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +22,8 @@ public class CourseController {
 
     @Resource
     CourseService courseService;
+    @Resource
+    InstitutionService institutionService;
 
     @RequestMapping("/subscribe")
     public String unbind(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
@@ -61,20 +65,23 @@ public class CourseController {
     public String modifyCourse0(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
         System.out.print("/course/modifyCourse0\n");
         String courseid = request.getParameter("classid");
+        String institutionid = request.getParameter("institutionid");
+        Institution institution = institutionService.getInstitutionByid(institutionid);
         Course course = courseService.getCourseByid(Integer.parseInt(courseid));
         model.addAttribute(course);
-
+        model.addAttribute(institution);
         return "/institution/Modify_course0";
     }
 
     @RequestMapping("/modifyCourse1")
     public String modifyCourse1(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
         System.out.print("/course/modifyCourse1\n");
-
         String courseid = request.getParameter("classid");
+        String institutionid = request.getParameter("institutionid");
+        Institution institution = institutionService.getInstitutionByid(institutionid);
         Course course = courseService.getCourseByid(Integer.parseInt(courseid));
         model.addAttribute(course);
-
+        model.addAttribute(institution);
         return "/institution/Modify_course1";
     }
 
