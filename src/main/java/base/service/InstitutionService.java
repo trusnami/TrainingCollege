@@ -10,4 +10,5 @@ import org.springframework.stereotype.Service;
 public interface InstitutionService {
     Institution getInstitutionByUsername(String username) throws Exception;
     Institution getInstitutionByid(String id) throws Exception;
+    boolean addBalance(int institutionid,double balance) throws Exception;
 }

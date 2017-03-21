@@ -61,6 +61,7 @@
         <table tableName="subscribelog"></table>
         <table tableName="unsubscribelog"></table>
         <table tableName="droplog"></table>
+        <table tableName="settlelog"></table>
         <table tableName="rawcourse"></table>
         <table tableName="approveold"></table>
         <table tableName="score"></table>

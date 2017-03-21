@@ -1,6 +1,8 @@
 package base.controller;
 
+import base.helper.MCourse;
 import base.model.Approveold;
+import base.model.Course;
 import base.model.Manager;
 import base.model.Rawcourse;
 import base.service.ManagerService;
@@ -12,7 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by yugi on 2017/3/20.
@@ -70,8 +74,19 @@ public class ManagerController {
         System.out.println("/Manager/Settle");
         String username = (String) session.getAttribute("username");
         Manager manager = managerService.getManagerByUsername(username);
+        List<Course> courseList = managerService.getScoredCourse();
+        List<MCourse> mCourseList = new ArrayList<>();
+        ListIterator listIterator = courseList.listIterator();
+        double discount = 0.8;
+        while (listIterator.hasNext()){
+            Course course = (Course) listIterator.next();
+            MCourse mCourse = new MCourse(course,discount);
+            mCourseList.add(mCourse);
+        }
 
+//        System.out.println("/Manager/Settle size:"+mCourseList.size());
         model.addAttribute(manager);
+        model.addAttribute("list",mCourseList);
 
         return "/manager/settle";
     }

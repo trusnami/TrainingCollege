@@ -6,6 +6,7 @@ import base.model.*;
 import base.service.CourseService;
 import base.service.InstitutionService;
 import base.service.LogService;
+import base.service.ManagerService;
 import base.utils.MyTool;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,6 +33,8 @@ public class InstitutionController {
     CourseService courseService;
     @Resource
     LogService logService;
+    @Resource
+    ManagerService managerService;
 
     @RequestMapping("/Home")
     public String toHome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
@@ -163,11 +166,23 @@ public class InstitutionController {
 
     @RequestMapping("/Course_Income")
     public String courseIncome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
-        System.out.println("/institution/Home");
+        System.out.println("/institution/Course_Income");
         String username = (String) session.getAttribute("username");
         Institution institution = institutionService.getInstitutionByUsername(username);
         model.addAttribute(institution);
         return "/institution//Course_income";
     }
 
+    @RequestMapping("/addbalance")
+    public String addBalance(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.println("/institution/addbalance");
+        int instituttionid = Integer.parseInt(request.getParameter("institutionid"));
+        double money = Double.parseDouble(request.getParameter("money"));
+        int courseid = Integer.parseInt(request.getParameter("courseid"));
+        boolean result = institutionService.addBalance(instituttionid,money);
+        boolean result1 = courseService.setCourseSettleFinished(courseid);
+        boolean result2 = managerService.newSettltlog(instituttionid,money,courseid);
+
+        return "redirect:/Manager/Settle";
+    }
 }

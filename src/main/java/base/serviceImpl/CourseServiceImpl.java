@@ -388,5 +388,14 @@ public class CourseServiceImpl implements CourseService {
         return false;
     }
 
+    @Override
+    public boolean setCourseSettleFinished(int courseid) throws Exception {
+        Course course = courseMapper.selectByPrimaryKey(courseid);
+        course.setScorestate(2);
+        int result = courseMapper.updateByPrimaryKey(course);
+
+        return false;
+    }
+
 
 }

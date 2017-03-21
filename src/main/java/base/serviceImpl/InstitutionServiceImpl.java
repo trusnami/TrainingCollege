@@ -34,4 +34,15 @@ public class InstitutionServiceImpl implements InstitutionService {
 
         return institution;
     }
+
+    @Override
+    public boolean addBalance(int institutionid, double balance) throws Exception {
+        Institution institution = institutionMapper.selectByPrimaryKey(institutionid);
+        double balancei = institution.getBalance();
+        balancei = balancei+balance;
+        institution.setBalance(balancei);
+        int reusult = institutionMapper.updateByPrimaryKey(institution);
+
+        return false;
+    }
 }

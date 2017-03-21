@@ -1,8 +1,6 @@
 package base.serviceImpl;
 
-import base.mapper.ApproveoldMapper;
-import base.mapper.ManagerMapper;
-import base.mapper.RawcourseMapper;
+import base.mapper.*;
 import base.model.*;
 import base.service.ManagerService;
 import org.springframework.stereotype.Service;
@@ -22,6 +20,10 @@ public class ManagerServiceImpl implements ManagerService{
     RawcourseMapper rawcourseMapper;
     @Resource
     ApproveoldMapper approveoldMapper;
+    @Resource
+    CourseMapper courseMapper;
+    @Resource
+    SettlelogMapper settlelogMapper;
 
     @Override
     public Manager getManagerByUsername(String username) throws Exception {
@@ -29,7 +31,7 @@ public class ManagerServiceImpl implements ManagerService{
         ManagerExample.Criteria criteria = managerExample.createCriteria();
         criteria.andManagernameEqualTo(username);
         List<Manager> managerList = managerMapper.selectByExample(managerExample);
-        System.out.println("getManagerByUsername,size:"+managerList.size());
+//        System.out.println("getManagerByUsername,size:"+managerList.size());
         return managerList.get(0);
     }
 
@@ -50,5 +52,25 @@ public class ManagerServiceImpl implements ManagerService{
         List<Approveold> approveoldList = approveoldMapper.selectByExample(approveoldExample);
 
         return approveoldList;
+    }
+
+    @Override
+    public List<Course> getScoredCourse() throws Exception {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andScorestateEqualTo(1);
+        List<Course> courseList = courseMapper.selectByExample(courseExample);
+        return courseList;
+    }
+
+    @Override
+    public boolean newSettltlog(int institutionid, double money, int courseid) throws Exception {
+        Settlelog settlelog = new Settlelog();
+        settlelog.setInstitutionid(institutionid);
+        settlelog.setAmount(money);
+        settlelog.setCourseid(courseid);
+        int result = settlelogMapper.insertSelective(settlelog);
+
+        return false;
     }
 }

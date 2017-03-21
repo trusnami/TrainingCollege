@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="username" property="username" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="balance" property="balance" jdbcType="INTEGER" />
+    <result column="balance" property="balance" jdbcType="DOUBLE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -102,7 +102,7 @@
     insert into institution (id, username, password, 
       balance)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{balance,jdbcType=INTEGER})
+      #{balance,jdbcType=DOUBLE})
   </insert>
   <insert id="insertSelective" parameterType="base.model.Institution" >
     insert into institution
@@ -131,7 +131,7 @@
         #{password,jdbcType=VARCHAR},
       </if>
       <if test="balance != null" >
-        #{balance,jdbcType=INTEGER},
+        #{balance,jdbcType=DOUBLE},
       </if>
     </trim>
   </insert>
@@ -154,7 +154,7 @@
         password = #{record.password,jdbcType=VARCHAR},
       </if>
       <if test="record.balance != null" >
-        balance = #{record.balance,jdbcType=INTEGER},
+        balance = #{record.balance,jdbcType=DOUBLE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -166,7 +166,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
-      balance = #{record.balance,jdbcType=INTEGER}
+      balance = #{record.balance,jdbcType=DOUBLE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -181,7 +181,7 @@
         password = #{password,jdbcType=VARCHAR},
       </if>
       <if test="balance != null" >
-        balance = #{balance,jdbcType=INTEGER},
+        balance = #{balance,jdbcType=DOUBLE},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -190,7 +190,7 @@
     update institution
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      balance = #{balance,jdbcType=INTEGER}
+      balance = #{balance,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

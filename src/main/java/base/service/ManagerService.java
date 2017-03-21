@@ -1,6 +1,7 @@
 package base.service;
 
 import base.model.Approveold;
+import base.model.Course;
 import base.model.Manager;
 import base.model.Rawcourse;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,9 @@ public interface ManagerService {
     List<Rawcourse> getRawCourse () throws Exception;
 
     List<Approveold> getModifyCourse() throws Exception;
+
+    List<Course> getScoredCourse() throws Exception;
+
+    boolean newSettltlog(int institutionid ,double money,int courseid) throws Exception;
 
 }

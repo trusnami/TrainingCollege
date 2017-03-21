@@ -46,4 +46,6 @@ public interface CourseService {
     boolean approveCourse(int courseid) throws Exception;
 
     boolean approveModifyCourse(int logid) throws Exception;
+
+    boolean setCourseSettleFinished(int courseid) throws Exception;
 }
