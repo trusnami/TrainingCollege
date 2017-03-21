@@ -111,4 +111,24 @@ public class CourseController {
         return "redirect:/institution/Modify_Course";
     }
 
+
+    @RequestMapping("/approve")
+    public String approve(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/approve\n");
+        int courseid = Integer.parseInt(request.getParameter("courseid"));
+        boolean result = courseService.approveCourse(courseid);
+
+        return "redirect:/Manager/Approve_Launch";
+    }
+
+    @RequestMapping("/approveModify")
+    public String approveModify(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
+        System.out.print("/course/approve\n");
+        int logid = Integer.parseInt(request.getParameter("logid"));
+        System.out.print("logid:"+logid+"\n");
+        boolean result = courseService.approveModifyCourse(logid);
+
+        return "redirect:/Manager/Approve_Modify";
+    }
+
 }

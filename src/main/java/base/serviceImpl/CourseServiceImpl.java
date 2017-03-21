@@ -349,5 +349,44 @@ public class CourseServiceImpl implements CourseService {
         return false;
     }
 
+    @Override
+    public boolean approveCourse(int courseid) throws Exception {
+        Rawcourse rawcourse = rawcourseMapper.selectByPrimaryKey(courseid);
+        rawcourse.setState(1);
+        int result = rawcourseMapper.updateByPrimaryKey(rawcourse);
+        Course course = new Course();
+        course.setScorestate(0);
+        course.setClassid(courseid);
+        course.setBegindate(rawcourse.getBegindate());
+        course.setPrice(rawcourse.getPrice());
+        course.setClassname(rawcourse.getCoursename());
+        course.setDescription(rawcourse.getDescription());
+        course.setEnddate(rawcourse.getEnddate());
+        course.setInstitutionid(rawcourse.getInstitutionid());
+        course.setMaxnumber(rawcourse.getMaxnumber());
+        course.setInstitutionname(rawcourse.getInstitutionname());
+        course.setTraineenumber(0);
+        int result1 = courseMapper.insert(course);
+
+        return false;
+    }
+
+    @Override
+    public boolean approveModifyCourse(int logid) throws Exception {
+        Approveold approveold = approveoldMapper.selectByPrimaryKey(logid);
+        approveold.setState(1);
+        int result = approveoldMapper.updateByPrimaryKey(approveold);
+        Course course = new Course();
+        course.setBegindate(approveold.getBegindate());
+        course.setMaxnumber(approveold.getMaxnumber());
+        course.setEnddate(approveold.getEnddate());
+        course.setPrice(approveold.getPrice());
+        course.setDescription(approveold.getDescription());
+        course.setClassname(approveold.getClassname());
+        int result1 = courseMapper.updateByPrimaryKeySelective(course);
+
+        return false;
+    }
+
 
 }

@@ -46,7 +46,7 @@ public class LoginController {
 
         switch (identity){
             case 0:
-                System.out.println("manager");break;
+                System.out.println("manager");return "redirect:/Manager/Home";
             case 1:
                 System.out.println("trainee");return "redirect:/trainee/Home";
             case 2:
