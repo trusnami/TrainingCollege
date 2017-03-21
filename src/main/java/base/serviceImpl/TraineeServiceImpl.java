@@ -101,5 +101,15 @@ public class TraineeServiceImpl implements TraineeService{
         return 0;
     }
 
+    @Override
+    public List<Trainee> getAlltrainee() throws Exception {
+        TraineeExample traineeExample = new TraineeExample();
+        TraineeExample.Criteria criteria = traineeExample.createCriteria();
+        criteria.andIdGreaterThanOrEqualTo(0);
+        List<Trainee> traineeList = traineeMapper.selectByExample(traineeExample);
+
+        return traineeList;
+    }
+
 
 }

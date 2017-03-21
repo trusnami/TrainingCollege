@@ -4,6 +4,8 @@ import base.model.Trainee;
 import base.model.TraineeExample;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 /**
  * Created by yugi on 2017/3/13.
@@ -16,5 +18,7 @@ public interface TraineeService {
     boolean addBalance(String username,String number) throws Exception;
 
     int exchange(String username,int money) throws  Exception;
+
+    List<Trainee> getAlltrainee() throws Exception;
 
 }

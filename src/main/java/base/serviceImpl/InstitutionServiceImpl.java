@@ -45,4 +45,14 @@ public class InstitutionServiceImpl implements InstitutionService {
 
         return false;
     }
+
+    @Override
+    public List<Institution> getAllInstitution() throws Exception {
+        InstitutionExample institutionExample = new InstitutionExample();
+        InstitutionExample.Criteria criteria = institutionExample.createCriteria();
+        criteria.andIdGreaterThanOrEqualTo(0);
+        List<Institution> institutionList = institutionMapper.selectByExample(institutionExample);
+
+        return institutionList;
+    }
 }

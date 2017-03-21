@@ -24,6 +24,8 @@ public class ManagerServiceImpl implements ManagerService{
     CourseMapper courseMapper;
     @Resource
     SettlelogMapper settlelogMapper;
+    @Resource
+    TraineeMapper traineeMapper;
 
     @Override
     public Manager getManagerByUsername(String username) throws Exception {
@@ -72,5 +74,10 @@ public class ManagerServiceImpl implements ManagerService{
         int result = settlelogMapper.insertSelective(settlelog);
 
         return false;
+    }
+
+    @Override
+    public List<Settlelog> getAllSettlelog() throws Exception {
+        return null;
     }
 }
