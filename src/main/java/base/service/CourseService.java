@@ -23,6 +23,8 @@ public interface CourseService {
 
     List<Course> getCourseByid(List<Integer> courseidList) throws Exception;
 
+    List<Course> getCourseByTraineeid(int traineeid) throws Exception;
+
     boolean unsubcribe (String traineeid,String classid) throws Exception;
 
     boolean dropCourse (String traineeid,String classid) throws Exception;
@@ -32,6 +34,8 @@ public interface CourseService {
     List<Rawcourse> getRawCourseByInstitutionName (String institutionName) throws Exception;
 
     List<Course> getCourseByInstitutionName (String institutionName) throws Exception;
+
+    List<Course> getCourseByInstitutionId(int institutionid) throws Exception;
 
     boolean applyModifyCourse (String courseid,String courseName,String beginDate,
                                String description,String maxNumber,String endDate,

@@ -31,7 +31,8 @@ public class LoginController {
     }
 
     @RequestMapping("/login")
-    public String login (HttpServletRequest request, RedirectAttributes attributes, HttpSession session,Model model) throws  Exception
+    public String login (HttpServletRequest request, RedirectAttributes attributes, HttpSession session,
+                         Model model) throws  Exception
     {
         System.out.printf("ooo\n");
         String userName = request.getParameter("userName");
@@ -58,6 +59,24 @@ public class LoginController {
             default:
                 System.out.println("unknown number");break;
         }
+
+        return "index";
+    }
+
+    @RequestMapping("/register")
+    public String regiter(HttpServletRequest request, RedirectAttributes attributes, HttpSession session,
+                          Model model) throws  Exception
+    {
+        System.out.println("/user/register");
+
+        return "Register";
+    }
+
+    @RequestMapping("/registered")
+    public String regitered(HttpServletRequest request, RedirectAttributes attributes, HttpSession session,
+                          Model model) throws  Exception
+    {
+        System.out.println("/user/registered");
 
         return "index";
     }

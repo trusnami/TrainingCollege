@@ -78,6 +78,11 @@ public class ManagerServiceImpl implements ManagerService{
 
     @Override
     public List<Settlelog> getAllSettlelog() throws Exception {
-        return null;
+        SettlelogExample settlelogExample = new SettlelogExample();
+        SettlelogExample.Criteria criteria = settlelogExample.createCriteria();
+        criteria.andInstitutionidGreaterThanOrEqualTo(0);
+        List<Settlelog> settlelogList = settlelogMapper.selectByExample(settlelogExample);
+
+        return settlelogList;
     }
 }

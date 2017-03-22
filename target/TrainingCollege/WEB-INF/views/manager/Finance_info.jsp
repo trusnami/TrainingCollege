@@ -214,7 +214,96 @@
         </section>
 
         <!-- Main content -->
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">settle log</h3>
 
+                                <div class="box-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <th>institution id</th>
+                                        <th>time</th>
+                                        <th>amount</th>
+                                        <th>course id</th>
+                                    </tr>
+                                    <c:forEach var="item" items="${list}">
+                                        <%--<tr>--%>
+                                        <%--<td>asd</td>--%>
+                                        <%--</tr>--%>
+                                        <tr>
+                                            <td>${item.institutionid}</td>
+                                            <td>${item.time}</td>
+                                            <td>${item.amount}</td>
+                                            <td>${item.courseid}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">recharge log</h3>
+
+                                <div class="box-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <th>trainee id</th>
+                                        <th>time</th>
+                                        <th>amount</th>
+                                    </tr>
+                                    <c:forEach var="item" items="${list1}">
+                                        <%--<tr>--%>
+                                        <%--<td>asd</td>--%>
+                                        <%--</tr>--%>
+                                        <tr>
+                                            <td>${item.traineeid}</td>
+                                            <td>${item.time}</td>
+                                            <td>${item.amount}</td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

@@ -214,7 +214,65 @@
         </section>
 
         <!-- Main content -->
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">course 0</h3>
 
+                                <div class="box-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <th>trainee id</th>
+                                        <th>trainee name</th>
+                                        <th>membership state</th>
+                                        <th>level</th>
+                                        <th>point</th>
+                                        <th>balance</th>
+                                        <th>operation</th>
+                                    </tr>
+                                    <c:forEach var="item" items="${list}">
+                                        <%--<tr>--%>
+                                        <%--<td>asd</td>--%>
+                                        <%--</tr>--%>
+                                        <tr>
+                                            <td>${item.id}</td>
+                                            <td>${item.username}</td>
+                                            <td>${item.memberstate}</td>
+                                            <td>${item.level}</td>
+                                            <td>${item.point}</td>
+                                            <td>${item.balance}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-block btn-warning "
+                                                        onclick="location='http://localhost:8080//Manager/Trainee_Course?traineeid=${item.id}'"
+                                                >chosen course</button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->

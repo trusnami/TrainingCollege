@@ -1,11 +1,8 @@
 package base.controller;
 
 import base.helper.MCourse;
-import base.model.Approveold;
-import base.model.Course;
-import base.model.Manager;
-import base.model.Rawcourse;
-import base.service.ManagerService;
+import base.model.*;
+import base.service.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,9 +24,18 @@ public class ManagerController {
 
     @Resource
     ManagerService managerService;
+    @Resource
+    InstitutionService institutionService;
+    @Resource
+    TraineeService traineeService;
+    @Resource
+    CourseService courseService;
+    @Resource
+    LogService logService;
 
     @RequestMapping("/Home")
-    public String toHome (HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception
+    public String toHome (HttpServletRequest request, RedirectAttributes attributes,
+                          HttpSession session, Model model) throws  Exception
     {
         System.out.println("/Manager/Home");
         String username = (String) session.getAttribute("username");
@@ -41,7 +47,8 @@ public class ManagerController {
     }
 
     @RequestMapping("/Approve_Launch")
-    public String approveLaunch (HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception
+    public String approveLaunch (HttpServletRequest request, RedirectAttributes attributes,
+                                 HttpSession session, Model model) throws  Exception
     {
         System.out.println("/Manager/Approve_Launch");
         String username = (String) session.getAttribute("username");
@@ -55,7 +62,8 @@ public class ManagerController {
     }
 
     @RequestMapping("/Approve_Modify")
-    public String approveModify (HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception
+    public String approveModify (HttpServletRequest request, RedirectAttributes attributes,
+                                 HttpSession session, Model model) throws  Exception
     {
         System.out.println("/Manager/Approve_Modify");
         String username = (String) session.getAttribute("username");
@@ -69,7 +77,8 @@ public class ManagerController {
     }
 
     @RequestMapping("/Settle")
-    public String settle (HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception
+    public String settle (HttpServletRequest request, RedirectAttributes attributes,
+                          HttpSession session, Model model) throws  Exception
     {
         System.out.println("/Manager/Settle");
         String username = (String) session.getAttribute("username");
@@ -92,39 +101,77 @@ public class ManagerController {
     }
 
     @RequestMapping("/Institution_Info")
-    public String institutionInfo (HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception
+    public String institutionInfo (HttpServletRequest request, RedirectAttributes attributes,
+                                   HttpSession session, Model model) throws  Exception
     {
         System.out.println("/Manager/Institution_Info");
         String username = (String) session.getAttribute("username");
         Manager manager = managerService.getManagerByUsername(username);
-
+        List<Institution> institutionList = institutionService.getAllInstitution();
+        System.out.println("institutionList size:"+institutionList.size());
         model.addAttribute(manager);
+        model.addAttribute("list",institutionList);
 
         return "/manager/Institution_info";
     }
 
     @RequestMapping("/Trainee_Info")
-    public String trianeenInfo (HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception
+    public String trianeenInfo (HttpServletRequest request, RedirectAttributes attributes,
+                                HttpSession session, Model model) throws  Exception
     {
         System.out.println("/Manager/Trainee_Info");
         String username = (String) session.getAttribute("username");
         Manager manager = managerService.getManagerByUsername(username);
-
+        List<Trainee> traineeList = traineeService.getAlltrainee();
+        System.out.println("traineeList size:"+traineeList.size());
         model.addAttribute(manager);
+        model.addAttribute("list",traineeList);
 
         return "/manager/Trainee_info";
     }
 
     @RequestMapping("/Finance_Info")
-    public String financeInfo (HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception
+    public String financeInfo (HttpServletRequest request, RedirectAttributes attributes,
+                               HttpSession session, Model model) throws  Exception
     {
         System.out.println("/Manager/Finance_Info");
         String username = (String) session.getAttribute("username");
         Manager manager = managerService.getManagerByUsername(username);
-
+        List<Settlelog> settlelogList = managerService.getAllSettlelog();
+        List<Rechargelog> rechargelogList = logService.getAllRechargelog();
+        System.out.println("settlelogList size:"+settlelogList.size());
         model.addAttribute(manager);
-
+        model.addAttribute("list",settlelogList);
+        model.addAttribute("list1",rechargelogList);
         return "/manager/Finance_info";
+    }
+
+    @RequestMapping("/Institution_Course")
+    public String institutionCourse(HttpServletRequest request, RedirectAttributes attributes,
+                                    HttpSession session, Model model) throws  Exception
+    {
+        System.out.println("/Manager/Institution_Course");
+        String username = (String) session.getAttribute("username");
+        Manager manager = managerService.getManagerByUsername(username);
+        int institutionid = Integer.parseInt(request.getParameter("institutionid"));
+        List<Course> courseList = courseService.getCourseByInstitutionId(institutionid);
+        model.addAttribute(manager);
+        model.addAttribute("list",courseList);
+        return "/manager/Institution_course";
+    }
+
+    @RequestMapping("/Trainee_Course")
+    public String traineeCourse(HttpServletRequest request, RedirectAttributes attributes,
+                                    HttpSession session, Model model) throws  Exception
+    {
+        System.out.println("/Manager/Trainee_Course");
+        String username = (String) session.getAttribute("username");
+        Manager manager = managerService.getManagerByUsername(username);
+        int traineeid = Integer.parseInt(request.getParameter("traineeid"));
+        List<Course> courseList = courseService.getCourseByTraineeid(traineeid);
+        model.addAttribute(manager);
+        model.addAttribute("list",courseList);
+        return "/manager/Trainee_course";
     }
 
 }

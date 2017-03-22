@@ -17,6 +17,8 @@ public interface LogService {
 
     List<Rechargelog> getRechargelogByID(int traineeid) throws Exception;
 
+    List<Rechargelog> getAllRechargelog() throws Exception;
+
     List<Subscribelog> getSubscribelogByID(int traineeid) throws Exception;
 
     List<Unsubscribelog> getUnsubscribelogByID(int traineeid) throws Exception;

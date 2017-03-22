@@ -180,6 +180,13 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> getCourseByTraineeid(int traineeid) throws Exception {
+        List<Integer> courseidList = getChosenCourseid(traineeid);
+        List<Course> courseList = getCourseByid(courseidList);
+        return courseList;
+    }
+
+    @Override
     public boolean unsubcribe(String traineeid, String classid) throws Exception {
         TcourseKey tcourseKey = new TcourseKey();
         tcourseKey.setTraineeid(Integer.parseInt(traineeid));
@@ -289,6 +296,15 @@ public class CourseServiceImpl implements CourseService {
         CourseExample courseExample = new CourseExample();
         CourseExample.Criteria criteria = courseExample.createCriteria();
         criteria.andInstitutionnameEqualTo(institutionName);
+        List<Course> courseList = courseMapper.selectByExample(courseExample);
+        return courseList;
+    }
+
+    @Override
+    public List<Course> getCourseByInstitutionId(int institutionid) throws Exception {
+        CourseExample courseExample = new CourseExample();
+        CourseExample.Criteria criteria = courseExample.createCriteria();
+        criteria.andInstitutionidEqualTo(institutionid);
         List<Course> courseList = courseMapper.selectByExample(courseExample);
         return courseList;
     }

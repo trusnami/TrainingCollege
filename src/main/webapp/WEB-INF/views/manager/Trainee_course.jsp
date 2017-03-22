@@ -1,6 +1,13 @@
 <%--
   Created by IntelliJ IDEA.
   User: yugi
+  Date: 2017/3/22
+  Time: 20:16
+  To change this template use File | Settings | File Templates.
+--%>
+<%--
+  Created by IntelliJ IDEA.
+  User: yugi
   Date: 2017/3/15
   Time: 19:01
   To change this template use File | Settings | File Templates.
@@ -209,7 +216,7 @@
         <section class="content-header">
             <h1>
                 Information
-                <small> Institution info</small>
+                <small> Trainee Course </small>
             </h1>
 
         </section>
@@ -218,7 +225,7 @@
         <section class="content">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-6">
+                    <div class="col-xs-8">
                         <div class="box">
                             <div class="box-header">
                                 <h3 class="box-title">course 0</h3>
@@ -240,21 +247,26 @@
                                     <tr>
                                         <th>institution id</th>
                                         <th>institution name</th>
-                                        <th>balance</th>
+                                        <th>trainee number</th>
+                                        <th>max number</th>
+                                        <th>description</th>
+                                        <th>price</th>
+                                        <th>begin date</th>
+                                        <th>end date</th>
                                     </tr>
                                     <c:forEach var="item" items="${list}">
                                         <%--<tr>--%>
                                         <%--<td>asd</td>--%>
                                         <%--</tr>--%>
                                         <tr>
-                                            <td>${item.id}</td>
-                                            <td>${item.username}</td>
-                                            <td>${item.balance}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-block btn-warning "
-                                                        onclick="location='http://localhost:8080/Manager/Institution_Course?institutionid=${item.id}'"
-                                                >course launched</button>
-                                            </td>
+                                            <td>${item.institutionid}</td>
+                                            <td>${item.institutionname}</td>
+                                            <td>${item.traineenumber}</td>
+                                            <td>${item.maxnumber}</td>
+                                            <td>${item.description}</td>
+                                            <td>${item.price}</td>
+                                            <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                            <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -514,5 +526,6 @@
 <script src="/js/bootstrap-table.js"></script>
 </body>
 </html>
+
 
 

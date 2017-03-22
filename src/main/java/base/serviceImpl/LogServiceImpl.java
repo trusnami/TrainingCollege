@@ -55,6 +55,15 @@ public class LogServiceImpl implements LogService{
     }
 
     @Override
+    public List<Rechargelog> getAllRechargelog() throws Exception {
+        RechargelogExample rechargelogExample = new RechargelogExample();
+        RechargelogExample.Criteria criteria1 = rechargelogExample.createCriteria();
+        criteria1.andTraineeidGreaterThanOrEqualTo(0);
+        List<Rechargelog> rechargelogList = rechargelogMapper.selectByExample(rechargelogExample);
+        return rechargelogList;
+    }
+
+    @Override
     public List<Subscribelog> getSubscribelogByID(int traineeid) throws Exception {
         SubscribelogExample subscribelogExample = new SubscribelogExample();
         SubscribelogExample.Criteria criteria1 = subscribelogExample.createCriteria();

@@ -58,7 +58,7 @@
             </div>
         </form>
 
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="/user/register" class="text-center">Register a new membership</a>
 
     </div>
     <!-- /.login-box-body -->

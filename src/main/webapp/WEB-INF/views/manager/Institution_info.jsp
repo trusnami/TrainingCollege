@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="/css/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="/css/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-table.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -214,7 +215,58 @@
         </section>
 
         <!-- Main content -->
+        <section class="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="box">
+                            <div class="box-header">
+                                <h3 class="box-title">course 0</h3>
 
+                                <div class="box-tools">
+                                    <div class="input-group input-group-sm" style="width: 150px;">
+                                        <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                        <div class="input-group-btn">
+                                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body table-responsive no-padding">
+                                <table class="table table-hover">
+                                    <tbody>
+                                    <tr>
+                                        <th>institution id</th>
+                                        <th>institution name</th>
+                                        <th>balance</th>
+                                    </tr>
+                                    <c:forEach var="item" items="${list}">
+                                        <%--<tr>--%>
+                                        <%--<td>asd</td>--%>
+                                        <%--</tr>--%>
+                                        <tr>
+                                            <td>${item.id}</td>
+                                            <td>${item.username}</td>
+                                            <td>${item.balance}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-block btn-warning "
+                                                        onclick="location='http://localhost:8080/Manager/Institution_Course?institutionid=${item.id}'"
+                                                >course launched</button>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -459,6 +511,7 @@
 <script src="/js/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/js/demo.js"></script>
+<script src="/js/bootstrap-table.js"></script>
 </body>
 </html>
 
