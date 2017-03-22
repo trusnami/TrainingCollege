@@ -72,12 +72,25 @@ public class LoginController {
         return "Register";
     }
 
+    @RequestMapping("/register1")
+    public String regiter1(HttpServletRequest request, RedirectAttributes attributes, HttpSession session,
+                          Model model) throws  Exception
+    {
+        System.out.println("/user/register");
+
+        return "Register1";
+    }
+
     @RequestMapping("/registered")
     public String regitered(HttpServletRequest request, RedirectAttributes attributes, HttpSession session,
                           Model model) throws  Exception
     {
         System.out.println("/user/registered");
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        int type = Integer.parseInt(request.getParameter("type"));
+        int result = userService.addNewUser(userName,password,type);
 
-        return "index";
+        return "redirect:/user/index";
     }
 }

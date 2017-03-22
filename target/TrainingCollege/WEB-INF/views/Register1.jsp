@@ -39,12 +39,12 @@
     </div>
 
     <div class="register-box-body">
-        <p class="login-box-msg">Register as a trainee</p>
+        <p class="login-box-msg">Register as a institution</p>
 
         <form action="/user/registered" method="post">
             <div class="form-group has-feedback">
                 <input type="text" name="userName" class="form-control" placeholder="user name">
-                <input type="number" name="type"  value="1" style="display:none">
+                <input type="number" name="type"  value="2" style="display:none">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">

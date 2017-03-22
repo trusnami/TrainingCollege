@@ -8,4 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface UserService {
     int login(String userName, String password) throws Exception;
+
+    int addNewUser(String userName, String password,int type) throws Exception;
 }

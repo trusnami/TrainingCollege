@@ -7,15 +7,15 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
-    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <link rel="stylesheet" href="/css/AdminLTE.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="css/blue.css">
+    <link rel="stylesheet" href="/css/blue.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -33,7 +33,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your training</p>
 
-        <form action="/user/index" method="post">
+        <form action="/user/login" method="post">
             <div class="form-group has-feedback">
                 <input type="username" name="userName" class="form-control" placeholder="username">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -58,19 +58,20 @@
             </div>
         </form>
 
-        <a href="/user/register" class="text-center">Register a new membership</a>
-
+        <a href="/user/register" class="text-center">Register as a new trainee</a>
+        <p></p>
+        <a href="/user/register1" class="text-center">Register as a new institution</a>
     </div>
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
 
 <!-- jQuery 2.2.3 -->
-<script src="js/jquery-2.2.3.min.js"></script>
+<script src="/js/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 <!-- iCheck -->
-<script src="js/icheck.min.js"></script>
+<script src="/js/icheck.min.js"></script>
 <script>
     $(function () {
         $('input').iCheck({
