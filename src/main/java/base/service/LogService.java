@@ -28,4 +28,6 @@ public interface LogService {
     List<Unsubscribelog> getUnsubscribelogByCourse(int courseid) throws Exception;
 
     List<Droplog> getDroplogByCourse(int courseid) throws Exception;
+
+    List<Settlelog> getSettlelogByinstitutionid(int institutionid) throws Exception;
 }

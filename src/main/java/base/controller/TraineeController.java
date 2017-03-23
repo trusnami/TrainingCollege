@@ -87,6 +87,7 @@ public class TraineeController {
         Trainee trainee = traineeService.getTraineeByUsername(username);
 
         int id = trainee.getId();
+        session.setAttribute("id",id);
 
         List<Card> cardList = cardService.getCardByTraineeId(id);
 

@@ -161,7 +161,7 @@
 
                         <li><a href="/trainee/M_Activated_frozen"><i class="fa fa-circle-o"></i> Activated | Frozen </a></li>
 
-                        <li><a href="/trainee/M_Level_Point"><i class="fa fa-circle-o"></i> Level | Point </a></li>
+                        <%--<li><a href="/trainee/M_Level_Point"><i class="fa fa-circle-o"></i> Level | Point </a></li>--%>
                     </ul>
                 </li>
                 <li class="treeview">

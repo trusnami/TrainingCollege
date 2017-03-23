@@ -220,7 +220,7 @@
                     <div class="col-xs-8">
                         <div class="box">
                             <div class="box-header">
-                                <h3 class="box-title">course 0</h3>
+                                <h3 class="box-title">trainee list</h3>
 
                                 <div class="box-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">

@@ -23,7 +23,7 @@ public class CardController {
 
     @RequestMapping("/newcard")
     public String addNewCard(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws Exception {
-        System.out.print("bububu\n");
+        System.out.print("/card/newcard\n");
 
         String phonenumber = request.getParameter("phoneNumber");
         String cardnumber = request.getParameter("cardNumber");

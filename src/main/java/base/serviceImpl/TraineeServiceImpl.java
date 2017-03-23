@@ -47,6 +47,10 @@ public class TraineeServiceImpl implements TraineeService{
         int amount = Integer.parseInt(number);
         double balance = trainee.getBalance();
         balance+=amount;
+        if (amount>=1000&&trainee.getLevel()==0){
+            trainee.setLevel(1);
+            trainee.setMemberstate("ACTIVATED");
+        }
         trainee.setBalance(balance);
         Rechargelog  rechargelog= new Rechargelog();
         rechargelog.setAmount(amount);

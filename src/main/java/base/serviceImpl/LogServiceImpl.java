@@ -26,6 +26,8 @@ public class LogServiceImpl implements LogService{
     SubscribelogMapper subscribelogMapper;
     @Resource
     UnsubscribelogMapper unsubscribelogMapper;
+    @Resource
+    SettlelogMapper settlelogMapper;
 
     @Override
     public List<Droplog> getDroplogByID(int traineeid) throws Exception {
@@ -106,5 +108,14 @@ public class LogServiceImpl implements LogService{
         criteria1.andCourseidEqualTo(courseid);
         List<Droplog> droplogList = droplogMapper.selectByExample(droplogExample);
         return droplogList;
+    }
+
+    @Override
+    public List<Settlelog> getSettlelogByinstitutionid(int institutionid) throws Exception {
+        SettlelogExample settlelogExample = new SettlelogExample();
+        SettlelogExample.Criteria criteria = settlelogExample.createCriteria();
+        criteria.andInstitutionidEqualTo(institutionid);
+        List<Settlelog> settlelogList = settlelogMapper.selectByExample(settlelogExample);
+        return settlelogList;
     }
 }

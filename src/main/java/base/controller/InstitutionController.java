@@ -169,7 +169,11 @@ public class InstitutionController {
         System.out.println("/institution/Course_Income");
         String username = (String) session.getAttribute("username");
         Institution institution = institutionService.getInstitutionByUsername(username);
+        int id = institution.getId();
+        List<Settlelog> settlelogList = logService.getSettlelogByinstitutionid(id);
+        System.out.println("settlelogList size:"+settlelogList.size());
         model.addAttribute(institution);
+        model.addAttribute("list",settlelogList);
         return "/institution//Course_income";
     }
 
