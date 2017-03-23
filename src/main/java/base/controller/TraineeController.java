@@ -308,6 +308,15 @@ public class TraineeController {
         return "/trainee/I_Expense";
     }
 
+    @RequestMapping("/changestate")
+    public  String changestate(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
+        System.out.print("/changestate\n");
+
+        int traineeid = Integer.parseInt(request.getParameter("traineeid"));
+        boolean result = traineeService.changestate(traineeid);
+
+        return "redirect:/trainee/M_Activated_frozen";
+    }
 
 
 }

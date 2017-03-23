@@ -51,6 +51,12 @@ public class TraineeServiceImpl implements TraineeService{
             trainee.setLevel(1);
             trainee.setMemberstate("ACTIVATED");
         }
+        if (amount>=5000&&trainee.getLevel()<2){
+            trainee.setLevel(2);
+        }
+        if (amount>=10000&&trainee.getLevel()<3){
+            trainee.setLevel(3);
+        }
         trainee.setBalance(balance);
         Rechargelog  rechargelog= new Rechargelog();
         rechargelog.setAmount(amount);
@@ -113,6 +119,20 @@ public class TraineeServiceImpl implements TraineeService{
         List<Trainee> traineeList = traineeMapper.selectByExample(traineeExample);
 
         return traineeList;
+    }
+
+    @Override
+    public boolean changestate(int traineeid) throws Exception {
+        System.out.println("TraineeServiceImpl changestate");
+        Trainee trainee = traineeMapper.selectByPrimaryKey(traineeid);
+        String memberstate = trainee.getMemberstate();
+        if (memberstate.equals("ACTIVATED")){
+            trainee.setMemberstate("FROZEN");
+        }else {
+            trainee.setMemberstate("ACTIVATED");
+        }
+        int result = traineeMapper.updateByPrimaryKey(trainee);
+        return false;
     }
 
 

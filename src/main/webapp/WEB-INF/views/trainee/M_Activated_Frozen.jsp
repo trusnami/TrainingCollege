@@ -224,7 +224,18 @@
                             </div>
                             <!-- /.widget-user-image -->
                             <h3 class="widget-user-username">id : ${trainee.id}</h3>
-                            <h5 class="widget-user-desc">${trainee.memberstate}</h5>
+                            <div class="row">
+                                <div class="col-lg-2">
+                                    <h5 class="widget-user-desc">${trainee.memberstate}</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn btn-block btn-default "
+                                            onclick="location='http://localhost:8080/trainee/changestate?traineeid=${trainee.id}'"
+                                    >membership change</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="box-footer no-padding">
                             <ul class="nav nav-stacked">
@@ -261,6 +272,8 @@
                                     </div>
                                     <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                         <div class="box-body">
+                                            discount:0.9
+                                            <br>
                                             exchange rate 1:30
                                         </div>
                                     </div>
@@ -275,6 +288,8 @@
                                     </div>
                                     <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                         <div class="box-body">
+                                            discount:0.8
+                                            <br>
                                             exchange rate 1:25
                                         </div>
                                     </div>
@@ -289,6 +304,8 @@
                                     </div>
                                     <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                                         <div class="box-body">
+                                            discount:0.7
+                                            <br>
                                             exchange rate 1:20
                                         </div>
                                     </div>
@@ -369,7 +386,7 @@
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
-                        </form>>
+                        </form>
                         <!-- /.box-body -->
                     </div>
                 </div>

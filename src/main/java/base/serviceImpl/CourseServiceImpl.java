@@ -126,16 +126,37 @@ public class CourseServiceImpl implements CourseService {
         traineenumber++;
         course.setTraineenumber(traineenumber);
 
-        int price = course.getPrice();
+        double price = course.getPrice();
+
+        if (trainee.getMemberstate().equals("ACTIVATED")){
+            double point = trainee.getPoint();
+            int level = trainee.getLevel();
+            switch (level) {
+                case 1:
+                    price = price*0.9;
+                    break;
+                case 2:
+                    price = price*0.8;
+                    break;
+                case 3:
+                    price = price*0.7;
+                    break;
+            }
+            point = point+price/100;
+            trainee.setPoint(point);
+        }
+
         double balance = trainee.getBalance();
         balance = balance - price;
         trainee.setBalance(balance);
+
+
 
         Subscribelog subscribelog = new Subscribelog();
         subscribelog.setTime(new Date());
         subscribelog.setTraineeid(Integer.parseInt(traineeid));
         subscribelog.setCourseid(Integer.parseInt(classid));
-        subscribelog.setDeduction(price);
+        subscribelog.setDeduction((int)price);
 
         int result0 = subscribelogMapper.insert(subscribelog);
         int result1 = courseMapper.updateByPrimaryKeySelective(course);
@@ -205,7 +226,26 @@ public class CourseServiceImpl implements CourseService {
         traineenumber--;
         course.setTraineenumber(traineenumber);
 
-        int price = course.getPrice();
+        double price = course.getPrice();
+
+        if (trainee.getMemberstate().equals("ACTIVATED")){
+            double point = trainee.getPoint();
+            int level = trainee.getLevel();
+            switch (level) {
+                case 1:
+                    price = price*0.9;
+                    break;
+                case 2:
+                    price = price*0.8;
+                    break;
+                case 3:
+                    price = price*0.7;
+                    break;
+            }
+            point = point-price/100;
+            trainee.setPoint(point);
+        }
+
         double balance = trainee.getBalance();
         balance = balance + price;
         trainee.setBalance(balance);
@@ -214,7 +254,7 @@ public class CourseServiceImpl implements CourseService {
         unsubscribelog.setCourseid(Integer.parseInt(classid));
         unsubscribelog.setTime(new Date());
         unsubscribelog.setTraineeid(Integer.parseInt(traineeid));
-        unsubscribelog.setRefund(price);
+        unsubscribelog.setRefund((int)price);
 
         int result0 = unsubscribelogMapper.insert(unsubscribelog);
         int result1 = courseMapper.updateByPrimaryKeySelective(course);

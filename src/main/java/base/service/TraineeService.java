@@ -21,4 +21,6 @@ public interface TraineeService {
 
     List<Trainee> getAlltrainee() throws Exception;
 
+    boolean changestate(int traineeid) throws Exception;
+
 }
