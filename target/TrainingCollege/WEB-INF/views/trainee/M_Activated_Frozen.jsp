@@ -109,7 +109,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="/user/logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -175,7 +175,7 @@
 
                         <li><a href="/trainee/C_Unsubscribe"><i class="fa fa-circle-o"></i> Unsubscribe </a></li>
 
-                        <li><a href="/trainee/C_Check_Withdraw"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>
+                        <%--<li><a href="/trainee/C_Check_Withdraw"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>--%>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -186,11 +186,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/trainee/I_Course"><i class="fa fa-circle-o"></i> Course </a></li>
+                        <%--<li><a href="/trainee/I_Course"><i class="fa fa-circle-o"></i> Course </a></li>--%>
 
                         <li><a href="/trainee/I_Member"><i class="fa fa-circle-o"></i> Member </a></li>
 
-                        <li><a href="/trainee/I_Expense"><i class="fa fa-circle-o"></i> Expense </a></li>
+                        <%--<li><a href="/trainee/I_Expense"><i class="fa fa-circle-o"></i> Expense </a></li>--%>
                     </ul>
                 </li>
 
@@ -214,7 +214,7 @@
         <section class="content">
             <div class="row">
 
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <!-- Widget: user widget style 1 -->
                     <div class="box box-widget widget-user-2">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -237,8 +237,8 @@
                         </div>
                     </div>
                     <!-- /.widget-user -->
-
-
+                </div>
+                <div class="col-md-6">
                     <div class="box box-solid">
                         <div class="box-header with-border">
                             <h3 class="box-title">Level Benefit</h3>
@@ -315,9 +315,10 @@
                         </div>
                         <!-- /.box-body -->
                     </div>
-                    <!-- /.box -->
-
-
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     <div class="box box-default">
                         <div class="box-header with-border">
                             <h3 class="box-title">Recharge</h3>
@@ -362,7 +363,8 @@
                             </div>
                         </form>
                     </div>
-
+                </div>
+                <div class="col-md-6">
                     <div class="box box-info">
                         <div class="box-header with-border">
                             <h3 class="box-title">Points Exchange</h3>
@@ -389,7 +391,6 @@
                         <!-- /.box-body -->
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- /.content -->

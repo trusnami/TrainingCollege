@@ -47,11 +47,11 @@ public class LoginController {
 
         switch (identity){
             case 0:
-                System.out.println("manager");return "redirect:/Manager/Home";
+                System.out.println("manager");return "redirect:/Manager/Approve_Launch";
             case 1:
-                System.out.println("trainee");return "redirect:/trainee/Home";
+                System.out.println("trainee");return "redirect:/trainee/M_Activated_frozen";
             case 2:
-                System.out.println("institution");return "redirect:/institution/Home";
+                System.out.println("institution");return "redirect:/institution/Launch_Course";
             case 3:
                 System.out.println("wrong password");return "wrong_password";
             case 4:
@@ -90,6 +90,16 @@ public class LoginController {
         String password = request.getParameter("password");
         int type = Integer.parseInt(request.getParameter("type"));
         int result = userService.addNewUser(userName,password,type);
+
+        return "redirect:/user/index";
+    }
+
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request, RedirectAttributes attributes, HttpSession session,
+                            Model model) throws  Exception
+    {
+        System.out.println("/user/logout");
+        session.invalidate();
 
         return "redirect:/user/index";
     }

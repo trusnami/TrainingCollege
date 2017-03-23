@@ -109,7 +109,7 @@
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                    <a href="/user/logout" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
                             </li>
                         </ul>
@@ -175,7 +175,7 @@
 
                         <li><a href="/trainee/C_Unsubscribe"><i class="fa fa-circle-o"></i> Unsubscribe </a></li>
 
-                        <li><a href="/trainee/C_Check_Withdraw"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>
+                        <%--<li><a href="/trainee/C_Check_Withdraw"><i class="fa fa-circle-o"></i> Check | Withdraw </a></li>--%>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -186,11 +186,11 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/trainee/I_Course"><i class="fa fa-circle-o"></i> Course </a></li>
+                        <%--<li><a href="/trainee/I_Course"><i class="fa fa-circle-o"></i> Course </a></li>--%>
 
                         <li><a href="/trainee/I_Member"><i class="fa fa-circle-o"></i> Member </a></li>
 
-                        <li><a href="/trainee/I_Expense"><i class="fa fa-circle-o"></i> Expense </a></li>
+                        <%--<li><a href="/trainee/I_Expense"><i class="fa fa-circle-o"></i> Expense </a></li>--%>
                     </ul>
                 </li>
 
