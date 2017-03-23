@@ -15,4 +15,6 @@ public interface ScoreService {
 
     List<Score> getScoreByCourseid(int courseid) throws Exception;
 
+    Score getScoreByCourseidAndTraineeid (int traineeid ,int courseid) throws Exception;
+
 }

@@ -3,6 +3,7 @@ package base.serviceImpl;
 import base.mapper.ScoreMapper;
 import base.model.Score;
 import base.model.ScoreExample;
+import base.model.ScoreKey;
 import base.service.ScoreService;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,14 @@ public class ScoreServiceImpl implements ScoreService{
         List<Score> scoreList = scoreMapper.selectByExample(scoreExample);
 
         return scoreList;
+    }
+
+    @Override
+    public Score getScoreByCourseidAndTraineeid(int traineeid, int courseid) throws Exception {
+        ScoreKey scoreKey = new ScoreKey();
+        scoreKey.setTraineeid(traineeid);
+        scoreKey.setCourseid(courseid);
+        Score score= scoreMapper.selectByPrimaryKey(scoreKey);
+        return score;
     }
 }

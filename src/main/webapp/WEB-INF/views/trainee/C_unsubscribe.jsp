@@ -218,7 +218,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">course 0</h3>
+                            <h3 class="box-title">course unstarted</h3>
 
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -279,7 +279,7 @@
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">course 1</h3>
+                            <h3 class="box-title">course on</h3>
 
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -335,10 +335,64 @@
             </div>
 
             <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">course finished</h3>
+
+                        <div class="box-tools">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
+
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body table-responsive no-padding">
+                        <table class="table table-hover">
+                            <tbody>
+                            <tr>
+                                <th>course id</th>
+                                <th>course name</th>
+                                <th>institution id</th>
+                                <th>institution name</th>
+                                <th>trainee number</th>
+                                <th>max number</th>
+                                <th>description</th>
+                                <th>price</th>
+                                <th>begin date</th>
+                                <th>end date</th>
+                            </tr>
+                            <c:forEach var="item" items="${postlist}">
+                                <tr>
+                                    <td>${item.classid}</td>
+                                    <td>${item.classname}</td>
+                                    <td>${item.institutionid}</td>
+                                    <td>${item.institutionname}</td>
+                                    <td>${item.traineenumber}</td>
+                                    <td>${item.maxnumber}</td>
+                                    <td>${item.description}</td>
+                                    <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
+                                    <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
+                                    <td>${item.price}</td>
+                                </tr>
+                            </c:forEach>
+                            </tbody></table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+
+            <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3 class="box-title">course 2</h3>
+                            <h3 class="box-title">course scored</h3>
 
                             <div class="box-tools">
                                 <div class="input-group input-group-sm" style="width: 150px;">
@@ -367,7 +421,7 @@
                                     <th>end date</th>
                                     <th>score</th>
                                 </tr>
-                                <c:forEach var="item" items="${postlist}">
+                                <c:forEach var="item" items="${scorelist}">
                                     <tr>
                                         <td>${item.classid}</td>
                                         <td>${item.classname}</td>
@@ -379,7 +433,7 @@
                                         <td><fmt:formatDate value="${item.begindate}" pattern="yyyy-MM-dd"/></td>
                                         <td><fmt:formatDate value="${item.enddate}" pattern="yyyy-MM-dd"/></td>
                                         <td>${item.price}</td>
-                                        <td>89</td>
+                                        <td>${item.score}</td>
                                     </tr>
                                 </c:forEach>
                                 </tbody></table>

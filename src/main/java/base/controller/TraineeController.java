@@ -1,11 +1,9 @@
 package base.controller;
 
 import base.helper.CourseState;
+import base.helper.ScoreCourse;
 import base.model.*;
-import base.service.CardService;
-import base.service.CourseService;
-import base.service.LogService;
-import base.service.TraineeService;
+import base.service.*;
 import base.utils.MyTool;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,6 +32,8 @@ public class TraineeController {
     CourseService courseService;
     @Resource
     LogService logService;
+    @Resource
+    ScoreService scoreService;
 
     @RequestMapping("/Home")
     public String toHome(HttpServletRequest request, RedirectAttributes attributes, HttpSession session, Model model) throws  Exception {
@@ -194,6 +194,8 @@ public class TraineeController {
         List<Course> courseList0 = new ArrayList<>();
         List<Course> courseList1 = new ArrayList<>();
         List<Course> courseList2 = new ArrayList<>();
+        List<Course> courseList3 = new ArrayList<>();
+        List<ScoreCourse> scoreCourseList = new ArrayList<>();
         Trainee trainee = traineeService.getTraineeByUsername(username);
         List<Integer> courseidList = courseService.getChosenCourseid(trainee.getId());
         List<Course> courseList = courseService.getCourseByid(courseidList);
@@ -207,20 +209,36 @@ public class TraineeController {
                 case IN:
                     courseList1.add(course);break;
                 case POST:
-                    courseList2.add(course);break;
+                    if (course.getScorestate()==0) {
+                        courseList2.add(course);
+                        break;
+                    } else {
+                        courseList3.add(course);
+                    }
             }
         }
 
-        System.out.println("id size:"+courseidList.size());
-        System.out.println("course size:"+courseList.size());
-        System.out.println("course0 size:"+courseList0.size());
-        System.out.println("course1 size:"+courseList1.size());
-        System.out.println("course2 size:"+courseList2.size());
+        if (!courseList3.isEmpty()){
+            listIterator = courseList3.listIterator();
+            while (listIterator.hasNext()){
+                Course course = (Course) listIterator.next();
+                Score score = scoreService.getScoreByCourseidAndTraineeid(trainee.getId(),course.getClassid());
+                ScoreCourse scoreCourse = new ScoreCourse(course,score.getScore());
+                scoreCourseList.add(scoreCourse);
+            }
+        }
+
+//        System.out.println("id size:"+courseidList.size());
+//        System.out.println("course size:"+courseList.size());
+//        System.out.println("course0 size:"+courseList0.size());
+//        System.out.println("course1 size:"+courseList1.size());
+//        System.out.println("course2 size:"+courseList2.size());
 
         model.addAttribute(trainee);
         model.addAttribute("prelist",courseList0);
         model.addAttribute("inlist",courseList1);
         model.addAttribute("postlist",courseList2);
+        model.addAttribute("scorelist",scoreCourseList);
 
         return "/trainee/C_unsubscribe";
     }
