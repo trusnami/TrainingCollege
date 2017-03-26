@@ -1,6 +1,5 @@
 package base.serviceImpl;
 
-import base.helper.ID;
 import base.mapper.InstitutionMapper;
 import base.mapper.TraineeMapper;
 import base.mapper.UserMapper;
